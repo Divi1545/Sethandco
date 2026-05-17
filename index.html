@@ -166,7 +166,7 @@
       overflow: hidden;
       background: #0d0d0d;
     }
-    .hero video, .hero-img-fallback {
+    .hero video {
       position: absolute;
       inset: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: center;
@@ -594,9 +594,6 @@
 
 <!-- VIDEO HERO -->
 <section class="hero" id="heroSection">
-  <img class="hero-img-fallback" id="heroFallback"
-    src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260516_151101_02ae9ca5-1497-4c36-bd03-882b6a919080.png"
-    alt="Seth & Co kids lifestyle"/>
   <div class="hero-overlay"></div>
   <div class="hero-body">
     <div class="hero-text">
@@ -1184,16 +1181,15 @@
   /* ── VIDEO HERO ── */
   var heroVid = null;
   function loadHeroVideo(url) {
-    var section  = document.getElementById('heroSection');
-    var fallback = document.getElementById('heroFallback');
-    var muteBtn  = document.getElementById('muteBtn');
+    var section = document.getElementById('heroSection');
+    var muteBtn = document.getElementById('muteBtn');
     var vid = document.createElement('video');
     vid.src = url; vid.autoplay = true; vid.loop = true; vid.muted = true; vid.playsInline = true;
-    vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center';
+    vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .8s ease';
     section.insertBefore(vid, section.firstChild);
     vid.addEventListener('canplay', function() {
-      fallback.style.display = 'none';
-      muteBtn.style.display  = 'flex';
+      vid.style.opacity = '1';
+      muteBtn.style.display = 'flex';
     });
     heroVid = vid;
   }
