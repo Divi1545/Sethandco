@@ -60,7 +60,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
     }
     .nav-logo-name {
       font-family: var(--serif);
@@ -80,10 +79,7 @@
       color: var(--light);
       margin-top: 2px;
     }
-    .nav-left {
-      display: flex;
-      gap: 0;
-    }
+    .nav-left { display: flex; gap: 0; }
     .nav-link {
       font-family: var(--sans);
       font-size: 11px;
@@ -108,12 +104,58 @@
       align-items: center;
       gap: 20px;
     }
-    .nav-icon {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
+    .nav-icon { cursor: pointer; display: flex; align-items: center; }
     .nav-icon svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.5; }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      margin-right: -6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: transform .25s, opacity .25s;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── MOBILE NAV DRAWER ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0; right: 0; bottom: 0;
+      background: var(--white);
+      z-index: 299;
+      flex-direction: column;
+      padding: 8px 0 40px;
+      overflow-y: auto;
+      border-top: 1px solid var(--rule);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--ink);
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--rule);
+      letter-spacing: .3px;
+    }
+    .mobile-nav a.red    { color: #C0392B; }
+    .mobile-nav a:hover  { background: var(--bg); }
+    .mobile-nav-divider  { padding: 10px 28px; font-family: var(--sans); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); background: var(--bg); border-bottom: 1px solid var(--rule); }
 
     /* ── VIDEO HERO ── */
     .hero {
@@ -124,106 +166,59 @@
       overflow: hidden;
       background: #0d0d0d;
     }
-    .hero video,
-    .hero-img-fallback {
+    .hero video, .hero-img-fallback {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
     }
     .hero-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.42) 0%, rgba(0,0,0,.06) 50%, transparent 100%);
     }
     .hero-body {
       position: absolute;
-      bottom: 48px;
-      left: 40px;
-      right: 40px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+      bottom: 48px; left: 40px; right: 40px;
+      display: flex; align-items: flex-end; justify-content: space-between;
     }
-    .hero-text {}
     .hero-eyebrow {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.7);
-      margin-bottom: 12px;
+      font-family: var(--sans); font-size: 10px; font-weight: 400;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,.7); margin-bottom: 12px;
     }
     .hero-heading {
       font-family: var(--serif);
       font-size: clamp(36px, 5vw, 64px);
-      font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: 24px;
+      font-weight: 300; font-style: italic;
+      color: #fff; line-height: 1.05; margin-bottom: 24px;
     }
     .hero-cta {
-      display: inline-block;
-      background: #fff;
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 13px 32px;
-      cursor: pointer;
+      display: inline-block; background: #fff; color: var(--ink);
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 13px 32px; cursor: pointer;
       transition: background .2s, color .2s;
     }
     .hero-cta:hover { background: var(--ink); color: #fff; }
     .hero-mute {
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255,255,255,.45);
-      border-radius: 50%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-      margin-bottom: 4px;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,.45); border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; margin-bottom: 4px;
     }
     .hero-mute svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 1.5; }
 
-    /* ── SECTION LABEL ── */
-    .sec-label {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--light);
-    }
-
     /* ── CATEGORY BAR ── */
     .cat-bar {
-      display: flex;
-      align-items: center;
-      gap: 0;
+      display: flex; align-items: center;
       padding: 0 24px;
       border-bottom: 1px solid var(--rule);
-      overflow-x: auto;
-      scrollbar-width: none;
+      overflow-x: auto; scrollbar-width: none;
     }
     .cat-bar::-webkit-scrollbar { display: none; }
     .cat-item {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: .4px;
-      color: var(--mid);
-      padding: 14px 20px;
-      cursor: pointer;
-      white-space: nowrap;
+      font-family: var(--sans); font-size: 12px; font-weight: 400;
+      letter-spacing: .4px; color: var(--mid);
+      padding: 14px 20px; cursor: pointer; white-space: nowrap;
       border-bottom: 2px solid transparent;
       transition: color .15s, border-color .15s;
     }
@@ -234,424 +229,236 @@
     .pgrid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--rule);
+      gap: 1px; background: var(--rule);
     }
-    .pc {
-      background: var(--white);
-      cursor: pointer;
-      position: relative;
-    }
-    .pc-img-wrap {
-      position: relative;
-      overflow: hidden;
-      background: var(--bg);
-    }
+    .pc { background: var(--white); cursor: pointer; position: relative; }
+    .pc-img-wrap { position: relative; overflow: hidden; background: var(--bg); }
     .pc-img-wrap img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: top center;
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top center;
       transition: transform .5s cubic-bezier(.25,.46,.45,.94);
     }
     .pc:hover .pc-img-wrap img { transform: scale(1.06); }
     .pc-wish {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      width: 34px;
-      height: 34px;
-      background: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity .2s;
+      position: absolute; bottom: 52px; right: 12px;
+      width: 34px; height: 34px;
+      background: var(--white); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
     }
     .pc-wish svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 1.5; }
     .pc:hover .pc-wish { opacity: 1; }
+    .pc-enquire {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--ink); color: #fff;
+      font-family: var(--sans); font-size: 10px; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 10px; text-align: center;
+      opacity: 0; transition: opacity .2s;
+      text-decoration: none;
+    }
+    .pc:hover .pc-enquire { opacity: 1; }
+    .pc-enquire.sold-enquire { display: none; }
     .pc-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .8px;
-      text-transform: uppercase;
+      position: absolute; top: 10px; left: 10px;
+      font-family: var(--sans); font-size: 9px; font-weight: 600;
+      letter-spacing: .8px; text-transform: uppercase;
       padding: 4px 8px;
-      background: var(--ink);
-      color: var(--white);
+      background: var(--ink); color: var(--white);
     }
     .pc-badge.sold { background: var(--light); }
-    .pc-info {
-      padding: 12px 12px 20px;
+    .pc-sku {
+      position: absolute; top: 10px; right: 10px;
+      font-family: var(--sans); font-size: 8px; font-weight: 400;
+      letter-spacing: 1px; color: rgba(255,255,255,.6);
     }
-    .pc-name {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
-    .pc-sub {
-      font-family: var(--sans);
-      font-size: 11px;
-      color: var(--light);
-      margin-bottom: 6px;
-    }
-    .pc-price {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink);
-    }
+    .pc-info { padding: 12px 12px 20px; }
+    .pc-name { font-family: var(--sans); font-size: 12px; font-weight: 400; color: var(--ink); margin-bottom: 2px; }
+    .pc-sub  { font-family: var(--sans); font-size: 11px; color: var(--light); margin-bottom: 6px; }
+    .pc-price { font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink); }
     .pc-swatches { display: flex; gap: 4px; margin-top: 7px; }
-    .pc-swatch {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      border: 1.5px solid var(--rule);
-    }
+    .pc-swatch { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid var(--rule); }
 
     /* ── EDITORIAL FULL-BLEED ── */
-    .editorial {
-      position: relative;
-      overflow: hidden;
-    }
+    .editorial { position: relative; overflow: hidden; }
     .editorial img {
-      width: 100%;
-      height: 70vh;
-      min-height: 400px;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+      width: 100%; height: 70vh; min-height: 400px;
+      object-fit: cover; object-position: top center; display: block;
     }
     .editorial-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.5) 0%, transparent 55%);
     }
-    .editorial-body {
-      position: absolute;
-      bottom: 36px;
-      left: 36px;
-      right: 36px;
-    }
+    .editorial-body { position: absolute; bottom: 36px; left: 36px; right: 36px; }
     .editorial-eyebrow {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 10px;
+      font-family: var(--sans); font-size: 10px; font-weight: 400;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.65); margin-bottom: 10px;
     }
     .editorial-heading {
-      font-family: var(--serif);
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: 20px;
+      font-family: var(--serif); font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 300; font-style: italic;
+      color: #fff; line-height: 1.05; margin-bottom: 20px;
     }
     .editorial-cta {
-      display: inline-block;
-      background: #fff;
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 11px 26px;
-      cursor: pointer;
+      display: inline-block; background: #fff; color: var(--ink);
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 11px 26px; cursor: pointer;
       transition: background .2s, color .2s;
     }
     .editorial-cta:hover { background: var(--ink); color: #fff; }
-    .editorial-price {
-      position: absolute;
-      bottom: 36px;
-      right: 36px;
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      color: #fff;
-    }
+    .editorial-price { position: absolute; bottom: 36px; right: 36px; font-family: var(--sans); font-size: 12px; font-weight: 500; color: #fff; }
 
     /* ── SPLIT 2-col ── */
     .split2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--rule);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: var(--rule);
     }
     .sp { position: relative; overflow: hidden; cursor: pointer; background: var(--bg); }
     .sp img {
-      width: 100%;
-      height: 600px;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+      width: 100%; height: 600px;
+      object-fit: cover; object-position: top center; display: block;
       transition: transform .55s cubic-bezier(.25,.46,.45,.94);
     }
     .sp:hover img { transform: scale(1.05); }
-    .sp-body {
-      position: absolute;
-      bottom: 28px;
-      left: 24px;
-      right: 24px;
-    }
+    .sp-body { position: absolute; bottom: 28px; left: 24px; right: 24px; }
     .sp-eyebrow {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 6px;
+      font-family: var(--sans); font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 6px;
     }
     .sp-name {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 400;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 16px;
-      line-height: 1.1;
+      font-family: var(--serif); font-size: 22px; font-weight: 400;
+      font-style: italic; color: #fff; margin-bottom: 16px; line-height: 1.1;
     }
     .sp-tag {
-      display: inline-block;
-      background: rgba(255,255,255,.92);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .5px;
-      padding: 6px 14px;
+      display: inline-block; background: rgba(255,255,255,.92); color: var(--ink);
+      font-family: var(--sans); font-size: 10px; font-weight: 500;
+      letter-spacing: .5px; padding: 6px 14px;
     }
+
+    /* ── LOOKBOOK ── */
+    .lookbook-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 40px 24px 20px; border-bottom: 1px solid var(--rule);
+    }
+    .lookbook-head-title {
+      font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--ink);
+    }
+    .lookbook-head-link {
+      font-family: var(--sans); font-size: 11px; color: var(--ink);
+      text-decoration: underline; text-underline-offset: 3px; letter-spacing: .5px;
+    }
+    .lookbook {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px; background: var(--rule);
+    }
+    .lk { position: relative; overflow: hidden; cursor: pointer; background: var(--bg); }
+    .lk img { width: 100%; height: 520px; object-fit: cover; object-position: top center; display: block; transition: transform .55s cubic-bezier(.25,.46,.45,.94); }
+    .lk.tall img { height: 680px; }
+    .lk:hover img { transform: scale(1.04); }
+    .lk-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.4) 0%, transparent 60%); }
+    .lk-body { position: absolute; bottom: 22px; left: 22px; right: 22px; }
+    .lk-label {
+      font-family: var(--sans); font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 5px;
+    }
+    .lk-name { font-family: var(--serif); font-size: 18px; font-weight: 400; font-style: italic; color: #fff; line-height: 1.1; }
+
+    /* ── MADE IN SL BANNER ── */
+    .sl-banner { position: relative; overflow: hidden; margin-top: 2px; }
+    .sl-banner img { width: 100%; height: 60vh; min-height: 360px; object-fit: cover; object-position: center; display: block; }
+    .sl-banner-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.4);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 14px; text-align: center; padding: 24px;
+    }
+    .sl-eyebrow { font-family: var(--sans); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.65); }
+    .sl-heading { font-family: var(--serif); font-size: clamp(28px, 4vw, 54px); font-weight: 300; font-style: italic; color: #fff; line-height: 1.1; }
+    .sl-sub { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; color: rgba(255,255,255,.6); }
+    .sl-cta {
+      margin-top: 8px;
+      display: inline-block; background: transparent; color: #fff;
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 12px 28px; border: 1px solid rgba(255,255,255,.6);
+      transition: background .2s, border-color .2s;
+    }
+    .sl-cta:hover { background: rgba(255,255,255,.15); border-color: #fff; }
 
     /* ── SPLIT 3-col ── */
     .split3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px;
-      background: var(--rule);
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px; background: var(--rule);
     }
     .s3 { position: relative; overflow: hidden; cursor: pointer; background: var(--bg); }
-    .s3 img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      transition: transform .55s cubic-bezier(.25,.46,.45,.94);
-    }
+    .s3 img { width: 100%; height: 480px; object-fit: cover; object-position: top center; display: block; transition: transform .55s cubic-bezier(.25,.46,.45,.94); }
     .s3:hover img { transform: scale(1.05); }
-    .s3-body {
-      position: absolute;
-      bottom: 22px;
-      left: 20px;
-      right: 20px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-    .s3-label {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.6);
-      margin-bottom: 4px;
-    }
-    .s3-name {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.1;
-    }
-    .s3-tag {
-      background: rgba(255,255,255,.9);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 500;
-      padding: 5px 12px;
-      flex-shrink: 0;
-    }
+    .s3-body { position: absolute; bottom: 22px; left: 20px; right: 20px; display: flex; align-items: flex-end; justify-content: space-between; }
+    .s3-label { font-family: var(--sans); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+    .s3-name { font-family: var(--serif); font-size: 16px; font-weight: 400; font-style: italic; color: #fff; line-height: 1.1; }
+    .s3-tag { background: rgba(255,255,255,.9); color: var(--ink); font-family: var(--sans); font-size: 10px; font-weight: 500; padding: 5px 12px; flex-shrink: 0; }
 
     /* ── SECTION HEADER ── */
-    .sec-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      padding: 40px 24px 20px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .sec-head-title {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-    }
-    .sec-head-link {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      cursor: pointer;
-    }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; padding: 40px 24px 20px; border-bottom: 1px solid var(--rule); }
+    .sec-head-title { font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--ink); }
+    .sec-head-link { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: .5px; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
     /* ── HORIZONTAL SCROLL STRIP ── */
     .hstrip-wrap { padding: 0 24px; margin-top: 28px; }
-    .hstrip {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 6px;
-    }
+    .hstrip { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; padding-bottom: 40px; }
     .hstrip::-webkit-scrollbar { display: none; }
     .hcard { flex: 0 0 200px; cursor: pointer; }
-    .hcard img {
-      width: 200px;
-      height: 275px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      transition: transform .4s;
-    }
+    .hcard img { width: 200px; height: 275px; object-fit: cover; object-position: top; display: block; transition: transform .4s; }
     .hcard:hover img { transform: scale(1.04); }
     .hcard-info { padding: 10px 0 0; }
-    .hcard-name {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 2px;
+    .hcard-name { font-family: var(--sans); font-size: 11px; font-weight: 400; color: var(--ink); margin-bottom: 2px; }
+    .hcard-price { font-family: var(--sans); font-size: 11px; color: var(--mid); }
+
+    /* ── VALUES STRIP ── */
+    .values {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      margin-top: 48px;
     }
-    .hcard-price {
-      font-family: var(--sans);
-      font-size: 11px;
-      color: var(--mid);
+    .value-item {
+      padding: 36px 28px; border-right: 1px solid var(--rule);
+      text-align: center;
     }
+    .value-item:last-child { border-right: none; }
+    .value-icon { font-size: 22px; margin-bottom: 10px; }
+    .value-title { font-family: var(--serif); font-size: 16px; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: 6px; }
+    .value-desc { font-family: var(--sans); font-size: 11px; color: var(--mid); line-height: 1.7; }
 
     /* ── ABOUT ── */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--rule);
-      margin-top: 64px;
-    }
-    .about-img {
-      background: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 80px;
-      min-height: 400px;
-    }
+    .about { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); margin-top: 0; }
+    .about-img { background: var(--cream); display: flex; align-items: center; justify-content: center; padding: 80px; min-height: 400px; }
     .about-img img { width: 200px; height: 200px; object-fit: contain; }
-    .about-copy {
-      padding: 80px 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-left: 1px solid var(--rule);
-    }
-    .about-eyebrow {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 16px;
-    }
-    .about-heading {
-      font-family: var(--serif);
-      font-size: 36px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
+    .about-copy { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--rule); }
+    .about-eyebrow { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+    .about-heading { font-family: var(--serif); font-size: 36px; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.15; margin-bottom: 20px; }
     .about-heading em { font-style: normal; color: var(--brown); }
-    .about-body {
-      font-family: var(--sans);
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.9;
-      margin-bottom: 10px;
-    }
-    .about-sig {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-style: italic;
-      color: var(--brown);
-      margin-top: 14px;
-    }
+    .about-body { font-family: var(--sans); font-size: 13px; color: var(--mid); line-height: 1.9; margin-bottom: 10px; }
+    .about-sig { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--brown); margin-top: 14px; }
 
     /* ── CONTACT ── */
-    .contact {
-      background: var(--ink);
-      padding: 56px 40px;
-    }
-    .contact-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
-      align-items: center;
-    }
-    .contact-heading {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 300;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 20px;
-    }
+    .contact { background: var(--ink); padding: 56px 40px; }
+    .contact-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+    .contact-heading { font-family: var(--serif); font-size: 32px; font-weight: 300; font-style: italic; color: #fff; margin-bottom: 20px; }
     .contact-lines { display: flex; flex-direction: column; gap: 10px; }
-    .contact-line {
-      font-family: var(--sans);
-      font-size: 12px;
-      color: rgba(255,255,255,.65);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .contact-line { font-family: var(--sans); font-size: 12px; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 10px; }
     .contact-line svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.4); fill: none; stroke-width: 1.5; flex-shrink: 0; }
     .contact-btns { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
     .contact-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
       padding: 13px 20px;
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.85);
-      border: 1px solid rgba(255,255,255,.2);
-      cursor: pointer;
-      transition: border-color .2s, color .2s;
-      text-decoration: none;
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .8px; text-transform: uppercase;
+      color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.2);
+      cursor: pointer; transition: border-color .2s, color .2s; text-decoration: none;
     }
     .contact-btn:hover { border-color: rgba(255,255,255,.7); color: #fff; }
     .contact-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
@@ -659,125 +466,27 @@
     .contact-btn.primary:hover { background: var(--rule); }
 
     /* ── NEWSLETTER ── */
-    .newsletter {
-      background: var(--cream);
-      padding: 64px 24px;
-      text-align: center;
-    }
-    .nl-heading {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-    .nl-sub {
-      font-family: var(--sans);
-      font-size: 13px;
-      color: var(--mid);
-      margin-bottom: 28px;
-    }
+    .newsletter { background: var(--cream); padding: 64px 24px; text-align: center; }
+    .nl-heading { font-family: var(--serif); font-size: 32px; font-weight: 300; font-style: italic; color: var(--ink); margin-bottom: 8px; }
+    .nl-sub { font-family: var(--sans); font-size: 13px; color: var(--mid); margin-bottom: 28px; }
     .nl-form { display: flex; max-width: 400px; margin: 0 auto; }
-    .nl-input {
-      flex: 1;
-      padding: 13px 16px;
-      font-family: var(--sans);
-      font-size: 13px;
-      border: 1px solid #ccc;
-      border-right: none;
-      outline: none;
-      background: #fff;
-      color: var(--ink);
-    }
+    .nl-input { flex: 1; padding: 13px 16px; font-family: var(--sans); font-size: 13px; border: 1px solid #ccc; border-right: none; outline: none; background: #fff; color: var(--ink); }
     .nl-input:focus { border-color: var(--ink); }
-    .nl-btn {
-      padding: 13px 24px;
-      background: var(--ink);
-      color: #fff;
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-    }
+    .nl-btn { padding: 13px 24px; background: var(--ink); color: #fff; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; }
 
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--rule);
-      padding: 48px 24px 24px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 40px;
-    }
-    .footer-brand-name {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
-    .footer-brand-sub {
-      font-family: var(--sans);
-      font-size: 8px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--light);
-      display: block;
-      margin-bottom: 14px;
-    }
-    .footer-desc {
-      font-family: var(--sans);
-      font-size: 12px;
-      color: var(--mid);
-      line-height: 1.8;
-      margin-bottom: 14px;
-    }
-    .footer-contact {
-      font-family: var(--sans);
-      font-size: 11px;
-      color: var(--mid);
-      line-height: 2.2;
-    }
+    footer { border-top: 1px solid var(--rule); padding: 48px 24px 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer-brand-name { font-family: var(--serif); font-size: 16px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--ink); margin-bottom: 2px; }
+    .footer-brand-sub { font-family: var(--sans); font-size: 8px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--light); display: block; margin-bottom: 14px; }
+    .footer-desc { font-family: var(--sans); font-size: 12px; color: var(--mid); line-height: 1.8; margin-bottom: 14px; }
+    .footer-contact { font-family: var(--sans); font-size: 11px; color: var(--mid); line-height: 2.2; }
     .footer-contact a { color: var(--ink); }
-    .footer-col h4 {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 16px;
-    }
-    .footer-col a {
-      display: block;
-      font-family: var(--sans);
-      font-size: 12px;
-      color: var(--mid);
-      margin-bottom: 10px;
-      transition: color .15s;
-    }
+    .footer-col h4 { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
+    .footer-col a { display: block; font-family: var(--sans); font-size: 12px; color: var(--mid); margin-bottom: 10px; transition: color .15s; }
     .footer-col a:hover { color: var(--ink); }
-    .footer-bottom {
-      border-top: 1px solid var(--rule);
-      padding-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-copy {
-      font-family: var(--sans);
-      font-size: 11px;
-      color: var(--light);
-    }
+    .footer-bottom { border-top: 1px solid var(--rule); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-family: var(--sans); font-size: 11px; color: var(--light); }
     .footer-soc { display: flex; gap: 18px; }
     .footer-soc a { display: flex; }
     .footer-soc svg { width: 18px; height: 18px; stroke: var(--light); fill: none; stroke-width: 1.5; transition: stroke .15s; }
@@ -786,23 +495,45 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .pgrid { grid-template-columns: repeat(3, 1fr); }
+      .values { grid-template-columns: repeat(2, 1fr); }
+      .value-item:nth-child(2) { border-right: none; }
+      .value-item:nth-child(3) { border-top: 1px solid var(--rule); }
+      .value-item:nth-child(4) { border-top: 1px solid var(--rule); border-right: none; }
     }
     @media (max-width: 768px) {
-      .pgrid    { grid-template-columns: repeat(2, 1fr); }
-      .split2   { grid-template-columns: 1fr; }
-      .split3   { grid-template-columns: 1fr 1fr; }
-      .about    { grid-template-columns: 1fr; }
+      .hamburger { display: flex; }
+      .nav-left  { display: none; }
+      .pgrid     { grid-template-columns: repeat(2, 1fr); }
+      .split2    { grid-template-columns: 1fr; }
+      .split3    { grid-template-columns: 1fr 1fr; }
+      .lookbook  { grid-template-columns: 1fr; }
+      .lk img, .lk.tall img { height: 380px; }
+      .about     { grid-template-columns: 1fr; }
+      .about-img { padding: 48px; min-height: auto; }
+      .about-copy { padding: 40px 28px; border-left: none; border-top: 1px solid var(--rule); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .contact-inner { grid-template-columns: 1fr; }
-      .nav-left { display: none; }
       .hero { height: 70vh; }
-      .sp img   { height: 420px; }
-      .s3 img   { height: 300px; }
+      .hero-body { bottom: 28px; left: 24px; right: 24px; }
+      .sp img  { height: 420px; }
+      .s3 img  { height: 300px; }
+      .values  { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 480px) {
-      .split3   { grid-template-columns: 1fr; }
+      .split3      { grid-template-columns: 1fr; }
+      .split2      { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .hero { height: 65vh; }
+      .hero-body { bottom: 20px; left: 20px; right: 20px; }
+      .hero-heading { font-size: 32px; }
+      .pgrid { grid-template-columns: repeat(2, 1fr); }
+      .values { grid-template-columns: 1fr; }
+      .value-item { border-right: none; border-bottom: 1px solid var(--rule); }
+      .editorial-body { left: 20px; right: 20px; bottom: 20px; }
+      .contact { padding: 40px 20px; }
+      .about-img { padding: 40px 24px; }
+      .about-copy { padding: 32px 20px; }
+      .topbar { font-size: 9px; letter-spacing: .8px; }
     }
   </style>
 </head>
@@ -829,21 +560,37 @@
     </a>
 
     <div class="nav-right">
-      <!-- Search -->
-      <span class="nav-icon">
+      <span class="nav-icon" style="display:none" id="navSearch">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
       </span>
-      <!-- Wishlist -->
       <span class="nav-icon">
         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </span>
-      <!-- Bag -->
       <span class="nav-icon">
         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       </span>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-divider">Shop</div>
+  <a href="#" onclick="closeMobileNav()">New In</a>
+  <a href="#" onclick="closeMobileNav()">Graphic Tees</a>
+  <a href="#" onclick="closeMobileNav()">Oversized Tees</a>
+  <a href="#" onclick="closeMobileNav()">2–5 Years</a>
+  <a href="#" onclick="closeMobileNav()">Gift Ideas</a>
+  <a class="red" href="#" onclick="closeMobileNav()">Sale</a>
+  <div class="mobile-nav-divider">Info</div>
+  <a href="#" onclick="closeMobileNav()">About Us</a>
+  <a href="#" onclick="closeMobileNav()">Size Guide</a>
+  <a href="#" onclick="closeMobileNav()">How to Order</a>
+  <a href="https://wa.me/94777813230" target="_blank" onclick="closeMobileNav()">WhatsApp Us</a>
+</div>
 
 <!-- VIDEO HERO -->
 <section class="hero" id="heroSection">
@@ -855,7 +602,7 @@
     <div class="hero-text">
       <div class="hero-eyebrow">Seth & Co. · Sri Lanka · Est. 2025</div>
       <div class="hero-heading">Little personalities.<br>Big style.</div>
-      <a class="hero-cta" href="#">Shop the collection</a>
+      <a class="hero-cta" href="#" onclick="trackEvent('hero_cta_click')">Shop the collection</a>
     </div>
     <div class="hero-mute" id="muteBtn" onclick="toggleMute()">
       <svg id="muteIcon" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
@@ -878,109 +625,98 @@
 <!-- PRODUCT GRID -->
 <div class="pgrid">
 
-  <!-- Beaver -->
-  <div class="pc">
+  <!-- P001 Beaver -->
+  <div class="pc" data-product-id="P001" onclick="trackView('P001')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT" alt="Beaver Graphic Tee"/>
       <div class="pc-badge">New</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <span class="pc-sku">P001</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <a class="pc-enquire" href="https://wa.me/94777813230?text=Hi!%20I%27m%20interested%20in%20the%20Beaver%20Graphic%20Tee%20(P001).%20Is%20it%20available%3F" target="_blank" rel="noopener" onclick="trackInquiry('P001','Beaver Graphic Tee')">Enquire on WhatsApp</a>
     </div>
     <div class="pc-info">
       <div class="pc-name">Beaver Graphic Tee</div>
       <div class="pc-sub">2–5 Years</div>
       <div class="pc-price">LKR 1,800</div>
-      <div class="pc-swatches">
-        <div class="pc-swatch" style="background:#111"></div>
-      </div>
+      <div class="pc-swatches"><div class="pc-swatch" style="background:#111"></div></div>
     </div>
   </div>
 
-  <!-- Best Dude -->
-  <div class="pc">
+  <!-- P002 Best Dude -->
+  <div class="pc" data-product-id="P002" onclick="trackView('P002')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg" alt="Best Dude Graphic Tee"/>
       <div class="pc-badge">New</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <span class="pc-sku">P002</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <a class="pc-enquire" href="https://wa.me/94777813230?text=Hi!%20I%27m%20interested%20in%20the%20Best%20Dude%20Graphic%20Tee%20(P002).%20Is%20it%20available%3F" target="_blank" rel="noopener" onclick="trackInquiry('P002','Best Dude Graphic Tee')">Enquire on WhatsApp</a>
     </div>
     <div class="pc-info">
       <div class="pc-name">Best Dude Graphic Tee</div>
       <div class="pc-sub">2–5 Years</div>
       <div class="pc-price">LKR 1,800</div>
-      <div class="pc-swatches">
-        <div class="pc-swatch" style="background:#fff;border-color:#ccc"></div>
-      </div>
+      <div class="pc-swatches"><div class="pc-swatch" style="background:#fff;border-color:#ccc"></div></div>
     </div>
   </div>
 
-  <!-- My Uncle Is A Legend -->
-  <div class="pc">
+  <!-- P003 My Uncle Is A Legend -->
+  <div class="pc" data-product-id="P003" onclick="trackView('P003')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=1p0MTz2_LX4qrhJw7HjRtnNSEpTY6BQ9b" alt="My Uncle Is A Legend Tee"/>
       <div class="pc-badge">New</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <span class="pc-sku">P003</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <a class="pc-enquire" href="https://wa.me/94777813230?text=Hi!%20I%27m%20interested%20in%20My%20Uncle%20Is%20A%20Legend%20tee%20(P003).%20Is%20it%20available%3F" target="_blank" rel="noopener" onclick="trackInquiry('P003','My Uncle Is A Legend')">Enquire on WhatsApp</a>
     </div>
     <div class="pc-info">
       <div class="pc-name">My Uncle Is A Legend</div>
       <div class="pc-sub">2–5 Years</div>
       <div class="pc-price">LKR 1,800</div>
-      <div class="pc-swatches">
-        <div class="pc-swatch" style="background:#111"></div>
-      </div>
+      <div class="pc-swatches"><div class="pc-swatch" style="background:#111"></div></div>
     </div>
   </div>
 
-  <!-- My Aunt Is A Legend -->
-  <div class="pc">
+  <!-- P004 My Aunt Is A Legend -->
+  <div class="pc" data-product-id="P004" onclick="trackView('P004')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1" alt="My Aunt Is A Legend Tee"/>
       <div class="pc-badge">New</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <span class="pc-sku">P004</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <a class="pc-enquire" href="https://wa.me/94777813230?text=Hi!%20I%27m%20interested%20in%20My%20Aunt%20Is%20A%20Legend%20tee%20(P004).%20Is%20it%20available%3F" target="_blank" rel="noopener" onclick="trackInquiry('P004','My Aunt Is A Legend')">Enquire on WhatsApp</a>
     </div>
     <div class="pc-info">
       <div class="pc-name">My Aunt Is A Legend</div>
       <div class="pc-sub">2–5 Years</div>
       <div class="pc-price">LKR 1,800</div>
-      <div class="pc-swatches">
-        <div class="pc-swatch" style="background:#f472b6;border-color:#f472b6"></div>
-      </div>
+      <div class="pc-swatches"><div class="pc-swatch" style="background:#f472b6;border-color:#f472b6"></div></div>
     </div>
   </div>
 
-  <!-- Paw Patrol -->
-  <div class="pc">
+  <!-- P005 Paw Patrol -->
+  <div class="pc" data-product-id="P005" onclick="trackView('P005')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=1yARcjcIsGugv2aVyhgiEnThP04pF91Ud" alt="Paw Patrol Sky Officer Tee"/>
       <div class="pc-badge">New</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <span class="pc-sku">P005</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <a class="pc-enquire" href="https://wa.me/94777813230?text=Hi!%20I%27m%20interested%20in%20the%20Paw%20Patrol%20Sky%20Officer%20tee%20(P005).%20Is%20it%20available%3F" target="_blank" rel="noopener" onclick="trackInquiry('P005','Paw Patrol Sky Officer')">Enquire on WhatsApp</a>
     </div>
     <div class="pc-info">
       <div class="pc-name">Paw Patrol Sky Officer</div>
       <div class="pc-sub">2–5 Years</div>
       <div class="pc-price">LKR 1,800</div>
-      <div class="pc-swatches">
-        <div class="pc-swatch" style="background:#4a90d9;border-color:#4a90d9"></div>
-      </div>
+      <div class="pc-swatches"><div class="pc-swatch" style="background:#4a90d9;border-color:#4a90d9"></div></div>
     </div>
   </div>
 
-  <!-- Cool Moms Club -->
-  <div class="pc">
+  <!-- P006 Cool Moms Club -->
+  <div class="pc" data-product-id="P006" onclick="trackView('P006')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=15U9kat5RF-rp8oN0aphJdULlFPsgFZWg" alt="Cool Moms Club Oversized Tee"/>
-      <div class="pc-badge sold">Sold Out</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <div class="pc-badge sold" id="badge-P006">Sold Out</div>
+      <span class="pc-sku">P006</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
     </div>
     <div class="pc-info">
       <div class="pc-name">Cool Moms Club</div>
@@ -989,14 +725,13 @@
     </div>
   </div>
 
-  <!-- Cool Aunts Club -->
-  <div class="pc">
+  <!-- P007 Cool Aunts Club -->
+  <div class="pc" data-product-id="P007" onclick="trackView('P007')">
     <div class="pc-img-wrap">
       <img src="https://drive.google.com/uc?export=view&id=19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_" alt="Cool Aunts Club Oversized Tee"/>
-      <div class="pc-badge sold">Sold Out</div>
-      <div class="pc-wish">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <div class="pc-badge sold" id="badge-P007">Sold Out</div>
+      <span class="pc-sku">P007</span>
+      <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
     </div>
     <div class="pc-info">
       <div class="pc-name">Cool Aunts Club</div>
@@ -1005,7 +740,7 @@
     </div>
   </div>
 
-  <!-- Coming Soon tile -->
+  <!-- Coming soon tile -->
   <div class="pc" style="background:var(--cream);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;min-height:300px;cursor:default">
     <div style="font-family:var(--serif);font-size:22px;font-weight:300;font-style:italic;color:var(--brown)">More soon</div>
     <div style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--light)">Follow @sethandco</div>
@@ -1019,10 +754,10 @@
   <div class="editorial-overlay"></div>
   <div class="editorial-body">
     <div class="editorial-eyebrow">Statement Tees · 2–5 Years</div>
-    <div class="editorial-heading">my aunt is a legend.</div>
+    <div class="editorial-heading">Made for the<br>moments that matter.</div>
     <a class="editorial-cta" href="#">Shop now</a>
   </div>
-  <div class="editorial-price">LKR 1,800</div>
+  <div class="editorial-price">From LKR 1,800</div>
 </div>
 
 <!-- SPLIT 2-col -->
@@ -1033,8 +768,8 @@
     <div class="sp-body">
       <div>
         <div class="sp-eyebrow">Graphic Tees · 2–5 Years</div>
-        <div class="sp-name">Beaver — The Original</div>
-        <a class="sp-tag" href="#">LKR 1,800</a>
+        <div class="sp-name">Bold prints<br>for bold kids</div>
+        <a class="sp-tag" href="#">Shop Tees</a>
       </div>
     </div>
   </div>
@@ -1043,11 +778,67 @@
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.48) 0%,transparent 55%)"></div>
     <div class="sp-body">
       <div>
-        <div class="sp-eyebrow">Graphic Tees · 2–5 Years</div>
-        <div class="sp-name">Best Dude</div>
-        <a class="sp-tag" href="#">LKR 1,800</a>
+        <div class="sp-eyebrow">Statement Pieces · Est. 2025</div>
+        <div class="sp-name">Little style.<br>Big personality.</div>
+        <a class="sp-tag" href="#">View All</a>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- LOOKBOOK SECTION -->
+<div class="lookbook-head" style="margin-top:48px">
+  <span class="lookbook-head-title">The Lookbook</span>
+  <a class="lookbook-head-link" href="#">View all</a>
+</div>
+<div class="lookbook" style="margin-top:2px">
+  <div class="lk tall">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260517_040704_3eca15ef-b536-4162-bbfd-bd0edce8d98e.png" alt="Child at colonial temple Sri Lanka"/>
+    <div class="lk-overlay"></div>
+    <div class="lk-body">
+      <div class="lk-label">Colombo · 2025</div>
+      <div class="lk-name">Heritage &amp; heart</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-rows:1fr 1fr;gap:2px;background:var(--rule)">
+    <div class="lk">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260517_040656_ac564205-a786-4899-8567-e6d44c7ca458.png" alt="Toddler girl in hammock tropical garden"/>
+      <div class="lk-overlay"></div>
+      <div class="lk-body">
+        <div class="lk-label">Tropical Days</div>
+        <div class="lk-name">Soft & dreamy</div>
+      </div>
+    </div>
+    <div class="lk">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260516_151122_adbf60f4-9d7f-4c1c-bc45-cf431b394523.png" alt="Child under palm tree"/>
+      <div class="lk-overlay"></div>
+      <div class="lk-body">
+        <div class="lk-label">Sri Lanka Vibes</div>
+        <div class="lk-name">Pure island joy</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MADE IN SL BANNER -->
+<div class="sl-banner">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260517_040658_f982bd1d-a00a-4c96-ba08-09c5b2bbd6c3.png" alt="Children at Galle Fort sunset"/>
+  <div class="sl-banner-overlay">
+    <div class="sl-eyebrow">Colombo · Sri Lanka · Est. 2025</div>
+    <div class="sl-heading">Made with love,<br>worn with joy.</div>
+    <div class="sl-sub">Soft fabrics · Playful designs · 2–5 years</div>
+    <a class="sl-cta" href="#">Our story</a>
+  </div>
+</div>
+
+<!-- LAGOON EDITORIAL -->
+<div class="editorial" style="margin-top:2px">
+  <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260517_040707_4e76a4ee-f0ae-4067-80f1-483173828b43.png" alt="Children at Sri Lanka lagoon at golden hour"/>
+  <div class="editorial-overlay"></div>
+  <div class="editorial-body">
+    <div class="editorial-eyebrow">Sri Lanka · Est. 2025</div>
+    <div class="editorial-heading">Where childhood<br>feels like magic.</div>
+    <a class="editorial-cta" href="#">Shop the collection</a>
   </div>
 </div>
 
@@ -1058,10 +849,10 @@
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 55%)"></div>
     <div class="s3-body">
       <div>
-        <div class="s3-label">The Originals</div>
-        <div class="s3-name">All three designs</div>
+        <div class="s3-label">Galle Fort</div>
+        <div class="s3-name">History & adventure</div>
       </div>
-      <div class="s3-tag">From LKR 1,800</div>
+      <div class="s3-tag">Shop Now</div>
     </div>
   </div>
   <div class="s3">
@@ -1069,8 +860,8 @@
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 55%)"></div>
     <div class="s3-body">
       <div>
-        <div class="s3-label">Made for movement</div>
-        <div class="s3-name">Soft. Bold. Fun.</div>
+        <div class="s3-label">Beach Days</div>
+        <div class="s3-name">Let them run wild</div>
       </div>
       <div class="s3-tag">Shop Now</div>
     </div>
@@ -1080,74 +871,106 @@
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 55%)"></div>
     <div class="s3-body">
       <div>
-        <div class="s3-label">2–5 Years</div>
-        <div class="s3-name">Built for adventure</div>
+        <div class="s3-label">Family First</div>
+        <div class="s3-name">For the whole family</div>
       </div>
-      <div class="s3-tag">Shop Now</div>
+      <div class="s3-tag">From LKR 1,800</div>
     </div>
   </div>
 </div>
 
-<!-- HORIZONTAL SCROLL STRIP -->
+<!-- SECTION HEADER + HORIZONTAL SCROLL -->
 <div class="sec-head">
   <span class="sec-head-title">Shop all designs</span>
   <a class="sec-head-link" href="#">View all</a>
 </div>
-<div class="hstrip-wrap" style="padding-bottom:40px">
+<div class="hstrip-wrap">
   <div class="hstrip">
-    <div class="hcard">
+    <div class="hcard" data-product-id="P001" onclick="trackView('P001')">
       <img src="https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT" alt="Beaver"/>
       <div class="hcard-info">
-        <div class="hcard-name">Beaver</div>
+        <div class="hcard-name">Beaver · P001</div>
         <div class="hcard-price">LKR 1,800</div>
       </div>
     </div>
-    <div class="hcard">
+    <div class="hcard" data-product-id="P002" onclick="trackView('P002')">
       <img src="https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg" alt="Best Dude"/>
       <div class="hcard-info">
-        <div class="hcard-name">Best Dude</div>
+        <div class="hcard-name">Best Dude · P002</div>
         <div class="hcard-price">LKR 1,800</div>
       </div>
     </div>
-    <div class="hcard">
+    <div class="hcard" data-product-id="P003" onclick="trackView('P003')">
       <img src="https://drive.google.com/uc?export=view&id=1p0MTz2_LX4qrhJw7HjRtnNSEpTY6BQ9b" alt="My Uncle Is A Legend"/>
       <div class="hcard-info">
-        <div class="hcard-name">My Uncle Is A Legend</div>
+        <div class="hcard-name">My Uncle Is A Legend · P003</div>
         <div class="hcard-price">LKR 1,800</div>
       </div>
     </div>
-    <div class="hcard">
+    <div class="hcard" data-product-id="P004" onclick="trackView('P004')">
       <img src="https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1" alt="My Aunt Is A Legend"/>
       <div class="hcard-info">
-        <div class="hcard-name">My Aunt Is A Legend</div>
+        <div class="hcard-name">My Aunt Is A Legend · P004</div>
         <div class="hcard-price">LKR 1,800</div>
       </div>
     </div>
-    <div class="hcard">
+    <div class="hcard" data-product-id="P005" onclick="trackView('P005')">
       <img src="https://drive.google.com/uc?export=view&id=1yARcjcIsGugv2aVyhgiEnThP04pF91Ud" alt="Paw Patrol"/>
       <div class="hcard-info">
-        <div class="hcard-name">Paw Patrol Sky Officer</div>
+        <div class="hcard-name">Paw Patrol Sky · P005</div>
         <div class="hcard-price">LKR 1,800</div>
       </div>
     </div>
-    <div class="hcard" style="opacity:.4">
+    <div class="hcard" data-product-id="P006" style="opacity:.45">
       <div style="width:200px;height:275px;background:#f0f0f0;display:flex;align-items:center;justify-content:center">
-        <span style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#999">Coming Soon</span>
+        <span style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#999">Sold Out</span>
       </div>
       <div class="hcard-info">
-        <div class="hcard-name">Cool Moms Club</div>
+        <div class="hcard-name">Cool Moms Club · P006</div>
         <div class="hcard-price">Sold Out</div>
       </div>
     </div>
-    <div class="hcard" style="opacity:.4">
+    <div class="hcard" data-product-id="P007" style="opacity:.45">
       <div style="width:200px;height:275px;background:#f0f0f0;display:flex;align-items:center;justify-content:center">
-        <span style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#999">Coming Soon</span>
+        <span style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#999">Sold Out</span>
       </div>
       <div class="hcard-info">
-        <div class="hcard-name">Cool Aunts Club</div>
+        <div class="hcard-name">Cool Aunts Club · P007</div>
         <div class="hcard-price">Sold Out</div>
       </div>
     </div>
+    <!-- Lifestyle lifestyle cards -->
+    <div class="hcard">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260516_151114_d1f06da8-7e5d-4db7-8abd-0c11a9fc2125.png" alt="Sri Lanka lifestyle"/>
+      <div class="hcard-info">
+        <div class="hcard-name">Sri Lanka Collection</div>
+        <div class="hcard-price">Est. 2025</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES STRIP -->
+<div class="values">
+  <div class="value-item">
+    <div class="value-icon">🧵</div>
+    <div class="value-title">Soft & safe fabrics</div>
+    <div class="value-desc">Gentle on little skin. Made for play, sleep, and everything between.</div>
+  </div>
+  <div class="value-item">
+    <div class="value-icon">🐻</div>
+    <div class="value-title">Named after Seth</div>
+    <div class="value-desc">Every piece made with the same love a mama has for her little one.</div>
+  </div>
+  <div class="value-item">
+    <div class="value-icon">🇱🇰</div>
+    <div class="value-title">Made in Sri Lanka</div>
+    <div class="value-desc">Proudly Colombo-born. Supporting local craftsmanship since day one.</div>
+  </div>
+  <div class="value-item">
+    <div class="value-icon">📦</div>
+    <div class="value-title">Island-wide delivery</div>
+    <div class="value-desc">Free delivery over LKR 5,000. Pickup at Colombo 03 available.</div>
   </div>
 </div>
 
@@ -1190,11 +1013,11 @@
       </div>
     </div>
     <div class="contact-btns">
-      <a class="contact-btn primary" href="https://wa.me/94777813230" target="_blank" rel="noopener">
+      <a class="contact-btn primary" href="https://wa.me/94777813230" target="_blank" rel="noopener" onclick="trackEvent('whatsapp_contact')">
         <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         WhatsApp Us
       </a>
-      <a class="contact-btn" href="mailto:sethandco.info@gmail.com">
+      <a class="contact-btn" href="mailto:sethandco.info@gmail.com" onclick="trackEvent('email_contact')">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Email Us
       </a>
@@ -1210,7 +1033,7 @@
 <div class="newsletter">
   <div class="nl-heading">Stay in the loop</div>
   <div class="nl-sub">New drops, restocks & exclusive offers — straight to your inbox.</div>
-  <form class="nl-form" onsubmit="return false">
+  <form class="nl-form" onsubmit="handleNewsletter(event)">
     <input class="nl-input" type="email" placeholder="your@email.com" required/>
     <button class="nl-btn" type="submit">Subscribe</button>
   </form>
@@ -1276,27 +1099,104 @@
 </footer>
 
 <script>
-  var heroVid = null;
+  /* ── PRODUCT DATA ── */
+  var PRODUCTS = [
+    { id:'P001', name:'Beaver Graphic Tee',      price:1800, sku:'SGT-001', inStock:true  },
+    { id:'P002', name:'Best Dude Graphic Tee',   price:1800, sku:'SGT-002', inStock:true  },
+    { id:'P003', name:'My Uncle Is A Legend',    price:1800, sku:'SGT-003', inStock:true  },
+    { id:'P004', name:'My Aunt Is A Legend',     price:1800, sku:'SGT-004', inStock:true  },
+    { id:'P005', name:'Paw Patrol Sky Officer',  price:1800, sku:'SGT-005', inStock:true  },
+    { id:'P006', name:'Cool Moms Club',          price:2800, sku:'SOT-006', inStock:false },
+    { id:'P007', name:'Cool Aunts Club',         price:2800, sku:'SOT-007', inStock:false }
+  ];
 
+  /* ── ANALYTICS TRACKING ── */
+  function trackView(productId) {
+    var views = JSON.parse(localStorage.getItem('sac_views') || '{}');
+    views[productId] = (views[productId] || 0) + 1;
+    localStorage.setItem('sac_views', JSON.stringify(views));
+  }
+
+  function trackInquiry(productId, productName) {
+    var inquiries = JSON.parse(localStorage.getItem('sac_inquiries') || '[]');
+    inquiries.unshift({ id: productId, name: productName, time: Date.now(), type: 'whatsapp' });
+    if (inquiries.length > 200) inquiries = inquiries.slice(0, 200);
+    localStorage.setItem('sac_inquiries', JSON.stringify(inquiries));
+  }
+
+  function trackEvent(eventName) {
+    var events = JSON.parse(localStorage.getItem('sac_events') || '[]');
+    events.unshift({ event: eventName, time: Date.now() });
+    if (events.length > 100) events = events.slice(0, 100);
+    localStorage.setItem('sac_events', JSON.stringify(events));
+  }
+
+  /* ── LOAD INVENTORY FROM ADMIN ── */
+  function loadInventory() {
+    var inv = JSON.parse(localStorage.getItem('sac_inventory') || '{}');
+    document.querySelectorAll('.pc[data-product-id]').forEach(function(card) {
+      var id = card.getAttribute('data-product-id');
+      if (!id) return;
+      var storedStock = inv[id];
+      if (storedStock === false) {
+        var badge = card.querySelector('.pc-badge');
+        var enquire = card.querySelector('.pc-enquire');
+        if (badge) { badge.textContent = 'Sold Out'; badge.className = 'pc-badge sold'; }
+        if (enquire) { enquire.style.display = 'none'; }
+      } else if (storedStock === true) {
+        var badge2 = card.querySelector('.pc-badge');
+        var enquire2 = card.querySelector('.pc-enquire');
+        if (badge2 && badge2.textContent === 'Sold Out') { badge2.textContent = 'In Stock'; badge2.className = 'pc-badge'; }
+        if (enquire2) { enquire2.style.display = ''; }
+      }
+    });
+    document.querySelectorAll('.hcard[data-product-id]').forEach(function(card) {
+      var id = card.getAttribute('data-product-id');
+      if (!id) return;
+      var storedStock = inv[id];
+      if (storedStock === false) {
+        var priceEl = card.querySelector('.hcard-price');
+        if (priceEl && priceEl.textContent.indexOf('LKR') !== -1) {
+          priceEl.textContent = 'Sold Out';
+          card.style.opacity = '0.45';
+        }
+      }
+    });
+  }
+
+  /* ── MOBILE NAV ── */
+  function toggleMobileNav() {
+    var nav = document.getElementById('mobileNav');
+    var btn = document.getElementById('hamburger');
+    var isOpen = nav.classList.contains('open');
+    nav.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
+  function closeMobileNav() {
+    var nav = document.getElementById('mobileNav');
+    var btn = document.getElementById('hamburger');
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── VIDEO HERO ── */
+  var heroVid = null;
   function loadHeroVideo(url) {
     var section  = document.getElementById('heroSection');
     var fallback = document.getElementById('heroFallback');
     var muteBtn  = document.getElementById('muteBtn');
     var vid = document.createElement('video');
-    vid.src = url;
-    vid.autoplay = true;
-    vid.loop     = true;
-    vid.muted    = true;
-    vid.playsInline = true;
+    vid.src = url; vid.autoplay = true; vid.loop = true; vid.muted = true; vid.playsInline = true;
     vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center';
     section.insertBefore(vid, section.firstChild);
-    vid.addEventListener('canplay', function () {
+    vid.addEventListener('canplay', function() {
       fallback.style.display = 'none';
       muteBtn.style.display  = 'flex';
     });
     heroVid = vid;
   }
-
   function toggleMute() {
     if (!heroVid) return;
     heroVid.muted = !heroVid.muted;
@@ -1306,16 +1206,29 @@
       : '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
   }
 
-  loadHeroVideo('https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260516_143745_6cec7f0e-4ad4-4738-b77c-ad5709cf9405.mp4');
+  /* ── NEWSLETTER ── */
+  function handleNewsletter(e) {
+    e.preventDefault();
+    var emails = JSON.parse(localStorage.getItem('sac_emails') || '[]');
+    var email = e.target.querySelector('input').value;
+    if (!emails.includes(email)) { emails.push(email); localStorage.setItem('sac_emails', JSON.stringify(emails)); }
+    var btn = e.target.querySelector('button');
+    btn.textContent = 'Subscribed!';
+    setTimeout(function(){ btn.textContent = 'Subscribe'; e.target.reset(); }, 2000);
+    trackEvent('newsletter_subscribe');
+  }
 
-  // Category filter UI (visual only)
+  /* ── CATEGORY FILTER (visual) ── */
   document.querySelectorAll('.cat-item').forEach(function(el) {
     el.addEventListener('click', function() {
       document.querySelectorAll('.cat-item').forEach(function(x){ x.classList.remove('active'); });
       el.classList.add('active');
     });
   });
-</script>
 
+  /* ── INIT ── */
+  loadInventory();
+  loadHeroVideo('https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260516_143745_6cec7f0e-4ad4-4738-b77c-ad5709cf9405.mp4');
+</script>
 </body>
 </html>
