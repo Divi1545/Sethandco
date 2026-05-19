@@ -246,6 +246,9 @@
     }
     .pc:hover .pc-img-front { transform: scale(1.04); }
     .pc:hover .pc-img-back:not([src=""]) { opacity: 1; }
+    /* composite images: same file, left=front right=back */
+    [data-composite] .pc-img-front { object-position: left center; transform-origin: left center; }
+    [data-composite] .pc-img-back  { object-position: right center; }
     .pc-wish {
       position: absolute; bottom: 52px; right: 12px;
       width: 34px; height: 34px;
@@ -630,10 +633,10 @@
 <div class="pgrid">
 
   <!-- P001 Beaver -->
-  <div class="pc" data-product-id="P001" onclick="trackView('P001')">
+  <div class="pc" data-product-id="P001" data-composite onclick="trackView('P001')">
     <div class="pc-img-wrap">
-      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT" alt="Beaver Graphic Tee"/>
-      <img class="pc-img-back" src="" alt="Beaver Graphic Tee back"/>
+      <img class="pc-img-front" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p001.jpg" onerror="this.src='https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT';this.style.objectPosition='top center';this.onerror=null" alt="Beaver Graphic Tee"/>
+      <img class="pc-img-back" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p001.jpg" onerror="this.src='';this.onerror=null" alt="Beaver Graphic Tee back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P001</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -648,10 +651,10 @@
   </div>
 
   <!-- P002 Best Dude -->
-  <div class="pc" data-product-id="P002" onclick="trackView('P002')">
+  <div class="pc" data-product-id="P002" data-composite onclick="trackView('P002')">
     <div class="pc-img-wrap">
-      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg" alt="Best Dude Graphic Tee"/>
-      <img class="pc-img-back" src="" alt="Best Dude Graphic Tee back"/>
+      <img class="pc-img-front" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p002.jpg" onerror="this.src='https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg';this.style.objectPosition='top center';this.onerror=null" alt="Best Dude Graphic Tee"/>
+      <img class="pc-img-back" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p002.jpg" onerror="this.src='';this.onerror=null" alt="Best Dude Graphic Tee back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P002</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -684,10 +687,10 @@
   </div>
 
   <!-- P004 My Aunt Is A Legend -->
-  <div class="pc" data-product-id="P004" onclick="trackView('P004')">
+  <div class="pc" data-product-id="P004" data-composite onclick="trackView('P004')">
     <div class="pc-img-wrap">
-      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1" alt="My Aunt Is A Legend Tee"/>
-      <img class="pc-img-back" src="" alt="My Aunt Is A Legend back"/>
+      <img class="pc-img-front" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p004.jpg" onerror="this.src='https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1';this.style.objectPosition='top center';this.onerror=null" alt="My Aunt Is A Legend Tee"/>
+      <img class="pc-img-back" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p004.jpg" onerror="this.src='';this.onerror=null" alt="My Aunt Is A Legend back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P004</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -736,10 +739,10 @@
   </div>
 
   <!-- P007 Cool Aunts Club -->
-  <div class="pc" data-product-id="P007" onclick="trackView('P007')">
+  <div class="pc" data-product-id="P007" data-composite onclick="trackView('P007')">
     <div class="pc-img-wrap">
-      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_" alt="Cool Aunts Club Oversized Tee"/>
-      <img class="pc-img-back" src="" alt="Cool Aunts Club back"/>
+      <img class="pc-img-front" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p007.jpg" onerror="this.src='https://drive.google.com/uc?export=view&id=19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_';this.style.objectPosition='top center';this.onerror=null" alt="Cool Aunts Club Oversized Tee"/>
+      <img class="pc-img-back" src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p007.jpg" onerror="this.src='';this.onerror=null" alt="Cool Aunts Club back"/>
       <div class="pc-badge sold" id="badge-P007">Sold Out</div>
       <span class="pc-sku">P007</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -898,14 +901,14 @@
 <div class="hstrip-wrap">
   <div class="hstrip">
     <div class="hcard" data-product-id="P001" onclick="trackView('P001')">
-      <img src="https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT" alt="Beaver"/>
+      <img src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p001.jpg" style="object-fit:cover;object-position:left center" onerror="this.src='https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT';this.style.objectPosition='top center';this.onerror=null" alt="Beaver"/>
       <div class="hcard-info">
         <div class="hcard-name">Beaver · P001</div>
         <div class="hcard-price">LKR 1,800</div>
       </div>
     </div>
     <div class="hcard" data-product-id="P002" onclick="trackView('P002')">
-      <img src="https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg" alt="Best Dude"/>
+      <img src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p002.jpg" style="object-fit:cover;object-position:left center" onerror="this.src='https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg';this.style.objectPosition='top center';this.onerror=null" alt="Best Dude"/>
       <div class="hcard-info">
         <div class="hcard-name">Best Dude · P002</div>
         <div class="hcard-price">LKR 1,800</div>
@@ -919,7 +922,7 @@
       </div>
     </div>
     <div class="hcard" data-product-id="P004" onclick="trackView('P004')">
-      <img src="https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1" alt="My Aunt Is A Legend"/>
+      <img src="https://raw.githubusercontent.com/Divi1545/Sethandco/main/images/p004.jpg" style="object-fit:cover;object-position:left center" onerror="this.src='https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1';this.style.objectPosition='top center';this.onerror=null" alt="My Aunt Is A Legend"/>
       <div class="hcard-info">
         <div class="hcard-name">My Aunt Is A Legend · P004</div>
         <div class="hcard-price">LKR 1,800</div>
