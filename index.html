@@ -233,12 +233,19 @@
     }
     .pc { background: var(--white); cursor: pointer; position: relative; }
     .pc-img-wrap { position: relative; overflow: hidden; background: var(--bg); }
-    .pc-img-wrap img {
+    .pc-img-wrap img { display: block; }
+    .pc-img-front {
       width: 100%; aspect-ratio: 3/4;
-      object-fit: cover; object-position: top center;
-      transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+      object-fit: cover; object-position: top center; display: block;
+      transition: opacity .38s ease, transform .5s cubic-bezier(.25,.46,.45,.94);
     }
-    .pc:hover .pc-img-wrap img { transform: scale(1.06); }
+    .pc-img-back {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      opacity: 0; transition: opacity .38s ease;
+    }
+    .pc:hover .pc-img-front { transform: scale(1.04); }
+    .pc:hover .pc-img-back:not([src=""]) { opacity: 1; }
     .pc-wish {
       position: absolute; bottom: 52px; right: 12px;
       width: 34px; height: 34px;
@@ -625,7 +632,8 @@
   <!-- P001 Beaver -->
   <div class="pc" data-product-id="P001" onclick="trackView('P001')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT" alt="Beaver Graphic Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT" alt="Beaver Graphic Tee"/>
+      <img class="pc-img-back" src="" alt="Beaver Graphic Tee back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P001</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -642,7 +650,8 @@
   <!-- P002 Best Dude -->
   <div class="pc" data-product-id="P002" onclick="trackView('P002')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg" alt="Best Dude Graphic Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg" alt="Best Dude Graphic Tee"/>
+      <img class="pc-img-back" src="" alt="Best Dude Graphic Tee back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P002</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -659,7 +668,8 @@
   <!-- P003 My Uncle Is A Legend -->
   <div class="pc" data-product-id="P003" onclick="trackView('P003')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=1p0MTz2_LX4qrhJw7HjRtnNSEpTY6BQ9b" alt="My Uncle Is A Legend Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1p0MTz2_LX4qrhJw7HjRtnNSEpTY6BQ9b" alt="My Uncle Is A Legend Tee"/>
+      <img class="pc-img-back" src="" alt="My Uncle Is A Legend back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P003</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -676,7 +686,8 @@
   <!-- P004 My Aunt Is A Legend -->
   <div class="pc" data-product-id="P004" onclick="trackView('P004')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1" alt="My Aunt Is A Legend Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1" alt="My Aunt Is A Legend Tee"/>
+      <img class="pc-img-back" src="" alt="My Aunt Is A Legend back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P004</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -693,7 +704,8 @@
   <!-- P005 Paw Patrol -->
   <div class="pc" data-product-id="P005" onclick="trackView('P005')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=1yARcjcIsGugv2aVyhgiEnThP04pF91Ud" alt="Paw Patrol Sky Officer Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=1yARcjcIsGugv2aVyhgiEnThP04pF91Ud" alt="Paw Patrol Sky Officer Tee"/>
+      <img class="pc-img-back" src="" alt="Paw Patrol Sky Officer back"/>
       <div class="pc-badge">New</div>
       <span class="pc-sku">P005</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -710,7 +722,8 @@
   <!-- P006 Cool Moms Club -->
   <div class="pc" data-product-id="P006" onclick="trackView('P006')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=15U9kat5RF-rp8oN0aphJdULlFPsgFZWg" alt="Cool Moms Club Oversized Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=15U9kat5RF-rp8oN0aphJdULlFPsgFZWg" alt="Cool Moms Club Oversized Tee"/>
+      <img class="pc-img-back" src="" alt="Cool Moms Club back"/>
       <div class="pc-badge sold" id="badge-P006">Sold Out</div>
       <span class="pc-sku">P006</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -725,7 +738,8 @@
   <!-- P007 Cool Aunts Club -->
   <div class="pc" data-product-id="P007" onclick="trackView('P007')">
     <div class="pc-img-wrap">
-      <img src="https://drive.google.com/uc?export=view&id=19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_" alt="Cool Aunts Club Oversized Tee"/>
+      <img class="pc-img-front" src="https://drive.google.com/uc?export=view&id=19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_" alt="Cool Aunts Club Oversized Tee"/>
+      <img class="pc-img-back" src="" alt="Cool Aunts Club back"/>
       <div class="pc-badge sold" id="badge-P007">Sold Out</div>
       <span class="pc-sku">P007</span>
       <div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -1128,6 +1142,57 @@
     localStorage.setItem('sac_events', JSON.stringify(events));
   }
 
+  /* ── LOAD PRODUCT OVERRIDES FROM ADMIN ── */
+  function loadProductOverrides() {
+    var overrides = JSON.parse(localStorage.getItem('sac_products') || '{}');
+    Object.keys(overrides).forEach(function(id) {
+      var o = overrides[id];
+      var card = document.querySelector('[data-product-id="' + id + '"]');
+      if (!card) return;
+      if (o.frontImage) {
+        var f = card.querySelector('.pc-img-front');
+        if (f) f.src = o.frontImage;
+      }
+      if (o.backImage) {
+        var b = card.querySelector('.pc-img-back');
+        if (b) b.src = o.backImage;
+      }
+      if (o.name) {
+        var n = card.querySelector('.pc-name');
+        if (n) n.textContent = o.name;
+      }
+      if (o.subtitle) {
+        var s = card.querySelector('.pc-sub');
+        if (s) s.textContent = o.subtitle;
+      }
+      if (o.price !== undefined) {
+        var p = card.querySelector('.pc-price');
+        if (p) p.textContent = 'LKR ' + Number(o.price).toLocaleString();
+        var wa = card.querySelector('.pc-enquire');
+        if (wa && o.name) {
+          wa.href = 'https://wa.me/94777813230?text=Hi!%20I%27m%20interested%20in%20' + encodeURIComponent(o.name) + '%20(' + id + ').%20Is%20it%20available%3F';
+        }
+      }
+      if (o.badge !== undefined) {
+        var badge = card.querySelector('.pc-badge');
+        if (badge) {
+          if (!o.badge) { badge.style.display = 'none'; }
+          else { badge.textContent = o.badge; badge.style.display = ''; badge.className = 'pc-badge' + (o.badge.toLowerCase().includes('sold') ? ' sold' : ''); }
+        }
+      }
+    });
+    /* update hstrip prices too */
+    var overAll = JSON.parse(localStorage.getItem('sac_products') || '{}');
+    document.querySelectorAll('.hcard[data-product-id]').forEach(function(card) {
+      var id = card.getAttribute('data-product-id');
+      var o = overAll[id];
+      if (!o) return;
+      if (o.price !== undefined) { var p = card.querySelector('.hcard-price'); if (p && p.textContent.indexOf('LKR') !== -1) p.textContent = 'LKR ' + Number(o.price).toLocaleString(); }
+      if (o.name) { var n = card.querySelector('.hcard-name'); if (n) n.textContent = o.name + ' · ' + id; }
+      if (o.frontImage) { var img = card.querySelector('img'); if (img) img.src = o.frontImage; }
+    });
+  }
+
   /* ── LOAD INVENTORY FROM ADMIN ── */
   function loadInventory() {
     var inv = JSON.parse(localStorage.getItem('sac_inventory') || '{}');
@@ -1223,6 +1288,7 @@
   });
 
   /* ── INIT ── */
+  loadProductOverrides();
   loadInventory();
   loadHeroVideo('https://d8j0ntlcm91z4.cloudfront.net/user_3D4qFT2UAJY0w5nC1lP9i4k8xxe/hf_20260516_143745_6cec7f0e-4ad4-4738-b77c-ad5709cf9405.mp4');
 </script>

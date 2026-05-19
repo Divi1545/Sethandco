@@ -26,186 +26,195 @@
     }
     html, body { font-family: var(--sans); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; min-height: 100vh; }
     a { text-decoration: none; color: inherit; }
+    input, textarea, select { font-family: var(--sans); }
 
     /* ── LOGIN ── */
-    #loginScreen {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      background: var(--ink); padding: 24px;
-    }
-    .login-card {
-      background: var(--white); width: 100%; max-width: 380px;
-      padding: 48px 40px; text-align: center;
-    }
-    .login-logo-name {
-      font-family: var(--serif); font-size: 22px; font-weight: 500;
-      letter-spacing: 4px; text-transform: uppercase; color: var(--ink); line-height: 1;
-    }
-    .login-logo-sub {
-      font-family: var(--sans); font-size: 8px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--light); margin-top: 3px; margin-bottom: 32px; display: block;
-    }
-    .login-title {
-      font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--light); margin-bottom: 28px;
-    }
-    .login-field {
-      width: 100%; margin-bottom: 12px;
-      padding: 13px 16px; font-family: var(--sans); font-size: 13px;
-      border: 1px solid var(--rule); outline: none; background: var(--white); color: var(--ink);
-    }
+    #loginScreen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--ink); padding: 24px; }
+    .login-card { background: var(--white); width: 100%; max-width: 380px; padding: 48px 40px; text-align: center; }
+    .login-logo-name { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--ink); line-height: 1; }
+    .login-logo-sub { font-family: var(--sans); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-top: 3px; margin-bottom: 32px; display: block; }
+    .login-title { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 28px; }
+    .login-field { width: 100%; margin-bottom: 12px; padding: 13px 16px; font-size: 13px; border: 1px solid var(--rule); outline: none; background: var(--white); color: var(--ink); }
     .login-field:focus { border-color: var(--ink); }
-    .login-btn {
-      width: 100%; padding: 14px; margin-top: 8px;
-      background: var(--ink); color: #fff;
-      font-family: var(--sans); font-size: 11px; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer;
-      transition: background .2s;
-    }
+    .login-btn { width: 100%; padding: 14px; margin-top: 8px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer; }
     .login-btn:hover { background: #333; }
-    .login-error {
-      font-family: var(--sans); font-size: 12px; color: var(--red);
-      margin-top: 12px; display: none;
-    }
-    .login-note {
-      font-family: var(--sans); font-size: 10px; color: var(--light);
-      margin-top: 28px; line-height: 1.6;
-    }
+    .login-error { font-size: 12px; color: var(--red); margin-top: 12px; display: none; }
+    .login-note { font-size: 10px; color: var(--light); margin-top: 28px; line-height: 1.6; }
 
-    /* ── DASHBOARD ── */
+    /* ── ADMIN NAV ── */
     #dashboard { display: none; min-height: 100vh; }
-
-    /* Admin Nav */
-    .admin-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--ink); color: #fff;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 28px; height: 56px;
-    }
+    .admin-nav { position: sticky; top: 0; z-index: 100; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 56px; }
     .admin-nav-logo { font-family: var(--serif); font-size: 16px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
     .admin-nav-right { display: flex; align-items: center; gap: 24px; }
-    .admin-nav-link { font-family: var(--sans); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: rgba(255,255,255,.65); cursor: pointer; transition: color .15s; }
+    .admin-nav-link { font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: rgba(255,255,255,.55); cursor: pointer; transition: color .15s; border: none; background: none; padding: 0; }
     .admin-nav-link:hover, .admin-nav-link.active { color: #fff; }
-    .admin-nav-badge { background: rgba(255,255,255,.12); padding: 3px 8px; font-size: 9px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.6); }
-    .logout-btn { font-family: var(--sans); font-size: 11px; color: rgba(255,255,255,.5); background: none; border: 1px solid rgba(255,255,255,.2); padding: 7px 16px; cursor: pointer; letter-spacing: .5px; text-transform: uppercase; transition: all .15s; }
+    .admin-badge { background: rgba(255,255,255,.12); padding: 3px 8px; font-size: 9px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    .logout-btn { font-size: 11px; color: rgba(255,255,255,.5); background: none; border: 1px solid rgba(255,255,255,.2); padding: 7px 16px; cursor: pointer; letter-spacing: .5px; text-transform: uppercase; transition: all .15s; }
     .logout-btn:hover { border-color: rgba(255,255,255,.6); color: #fff; }
 
-    /* Layout */
-    .admin-body { padding: 32px 28px; max-width: 1300px; margin: 0 auto; }
+    /* ── LAYOUT ── */
+    .admin-body { padding: 32px 28px; max-width: 1340px; margin: 0 auto; }
     .admin-page { display: none; }
     .admin-page.active { display: block; }
-
-    /* Page header */
     .page-header { margin-bottom: 28px; }
     .page-title { font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: 4px; }
-    .page-sub { font-family: var(--sans); font-size: 12px; color: var(--light); }
+    .page-sub { font-size: 12px; color: var(--light); }
 
-    /* Stat cards */
+    /* ── STAT CARDS ── */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
     .stat-card { background: var(--white); border: 1px solid var(--rule); padding: 24px 22px; }
-    .stat-label { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 10px; }
+    .stat-label { font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 10px; }
     .stat-value { font-family: var(--serif); font-size: 40px; font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 6px; }
-    .stat-meta { font-family: var(--sans); font-size: 11px; color: var(--mid); }
-    .stat-card.accent-green  .stat-value { color: var(--green); }
-    .stat-card.accent-red    .stat-value { color: var(--red); }
-    .stat-card.accent-amber  .stat-value { color: var(--amber); }
+    .stat-meta { font-size: 11px; color: var(--mid); }
+    .stat-card.g .stat-value { color: var(--green); }
+    .stat-card.r .stat-value { color: var(--red); }
+    .stat-card.a .stat-value { color: var(--amber); }
 
-    /* Section header */
-    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
-    .section-title { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); }
-    .section-action { font-family: var(--sans); font-size: 11px; color: var(--mid); cursor: pointer; }
+    /* ── SECTION HEADER ── */
+    .sec-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+    .sec-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); }
+    .sec-action { font-size: 11px; color: var(--mid); cursor: pointer; background: none; border: none; }
+    .sec-action:hover { color: var(--ink); }
 
-    /* Products table */
+    /* ── PRODUCT CARDS GRID ── */
+    .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .prod-card { background: var(--white); border: 1px solid var(--rule); overflow: hidden; }
+    .prod-card-img { position: relative; aspect-ratio: 3/4; background: var(--bg); overflow: hidden; }
+    .prod-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .prod-card-img .pc-img-back-thumb { position: absolute; inset: 0; opacity: 0; transition: opacity .35s; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .prod-card:hover .pc-img-back-thumb:not([src=""]) { opacity: 1; }
+    .prod-card-badge { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; padding: 3px 8px; background: var(--ink); color: #fff; }
+    .prod-card-badge.sold { background: var(--light); }
+    .prod-card-badge.green { background: var(--green); color: #fff; }
+    .prod-card-info { padding: 14px 14px 16px; border-top: 1px solid var(--rule); }
+    .prod-card-id { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--light); margin-bottom: 3px; }
+    .prod-card-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .prod-card-meta { display: flex; align-items: center; justify-content: space-between; }
+    .prod-card-price { font-size: 12px; color: var(--mid); }
+    .prod-card-actions { display: flex; gap: 8px; padding: 0 14px 14px; }
+    .edit-btn { flex: 1; padding: 9px; background: var(--ink); color: #fff; font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; transition: background .15s; }
+    .edit-btn:hover { background: #333; }
+    .stock-pill { font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+    .stock-pill.in  { background: #dcfce7; color: #166534; }
+    .stock-pill.out { background: #fee2e2; color: #991b1b; }
+
+    /* ── PRODUCT EDIT MODAL ── */
+    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal { background: var(--white); width: 100%; max-width: 680px; max-height: 92vh; overflow-y: auto; display: flex; flex-direction: column; }
+    .modal-header { padding: 22px 24px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--white); z-index: 1; }
+    .modal-title { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--ink); }
+    .modal-id { font-size: 11px; color: var(--light); letter-spacing: 1px; margin-top: 2px; }
+    .modal-close { background: none; border: none; cursor: pointer; font-size: 24px; line-height: 1; color: var(--light); padding: 4px; }
+    .modal-close:hover { color: var(--ink); }
+    .modal-body { padding: 24px; flex: 1; }
+    .modal-footer { padding: 16px 24px; border-top: 1px solid var(--rule); display: flex; gap: 12px; align-items: center; position: sticky; bottom: 0; background: var(--white); }
+    .save-btn { padding: 13px 28px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; transition: background .15s; }
+    .save-btn:hover { background: #333; }
+    .cancel-btn { padding: 13px 20px; background: none; color: var(--mid); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; border: 1px solid var(--rule); cursor: pointer; }
+    .cancel-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .save-confirm { font-size: 11px; color: var(--green); opacity: 0; transition: opacity .3s; }
+
+    /* ── FORM FIELDS ── */
+    .form-row { margin-bottom: 20px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .form-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--light); margin-bottom: 7px; display: block; }
+    .form-input { width: 100%; padding: 11px 14px; font-size: 13px; border: 1px solid var(--rule); outline: none; color: var(--ink); background: var(--white); }
+    .form-input:focus { border-color: var(--ink); }
+    .form-input[readonly] { background: var(--bg); color: var(--mid); cursor: default; }
+    .form-hint { font-size: 10px; color: var(--light); margin-top: 5px; line-height: 1.5; }
+    .form-divider { border: none; border-top: 1px solid var(--rule); margin: 28px 0; }
+
+    /* ── IMAGE SECTION ── */
+    .img-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    .img-slot { display: flex; flex-direction: column; gap: 8px; }
+    .img-slot-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); }
+    .img-slot-desc { font-size: 11px; color: var(--mid); }
+    .img-preview {
+      aspect-ratio: 3/4; background: var(--bg); border: 1.5px dashed var(--rule);
+      display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;
+    }
+    .img-preview img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: none; }
+    .img-preview .img-empty { font-size: 11px; color: var(--light); text-align: center; padding: 16px; }
+    .img-preview.has-image { border-style: solid; border-color: var(--rule); }
+    .img-preview.has-image img { display: block; }
+    .img-preview.has-image .img-empty { display: none; }
+
+    /* ── IMAGE GUIDE ── */
+    .img-guide { background: #fffbeb; border: 1px solid #fde68a; padding: 16px 18px; margin-bottom: 24px; }
+    .img-guide-title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #92400e; margin-bottom: 10px; }
+    .img-guide-steps { font-size: 12px; color: #78350f; line-height: 2; }
+    .img-guide-url { font-family: monospace; font-size: 11px; background: #fef3c7; padding: 3px 8px; display: block; margin-top: 6px; word-break: break-all; color: #92400e; }
+
+    /* ── TOGGLE ── */
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-top: 1px solid var(--rule); }
+    .toggle-info { display: flex; flex-direction: column; gap: 3px; }
+    .toggle-info-label { font-size: 13px; color: var(--ink); }
+    .toggle-info-desc { font-size: 11px; color: var(--light); }
+    .toggle { position: relative; width: 44px; height: 24px; cursor: pointer; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; inset: 0; border-radius: 24px; background: #ddd; transition: background .25s; }
+    .toggle-slider:before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: #fff; top: 3px; left: 3px; transition: transform .25s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+    .toggle input:checked + .toggle-slider { background: var(--green); }
+    .toggle input:checked + .toggle-slider:before { transform: translateX(20px); }
+
+    /* ── ANALYTICS TABLE ── */
     .table-wrap { background: var(--white); border: 1px solid var(--rule); overflow-x: auto; margin-bottom: 32px; }
     table { width: 100%; border-collapse: collapse; }
     thead { background: var(--bg); }
-    th { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--light); padding: 12px 16px; text-align: left; white-space: nowrap; }
-    td { font-family: var(--sans); font-size: 12px; color: var(--ink); padding: 14px 16px; border-top: 1px solid var(--rule); vertical-align: middle; }
+    th { font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--light); padding: 12px 16px; text-align: left; white-space: nowrap; }
+    td { font-size: 12px; color: var(--ink); padding: 14px 16px; border-top: 1px solid var(--rule); vertical-align: middle; }
     tr:hover td { background: #fafafa; }
-    .badge { display: inline-block; font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
-    .badge.in-stock  { background: #dcfce7; color: #166534; }
-    .badge.sold-out  { background: #fee2e2; color: #991b1b; }
-    .badge.new-badge { background: #dbeafe; color: #1e40af; }
-    .bar-wrap { width: 120px; background: var(--bg); height: 4px; border-radius: 2px; }
-    .bar-fill { height: 4px; border-radius: 2px; background: var(--ink); transition: width .4s; }
+    .badge { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+    .badge.in { background: #dcfce7; color: #166534; }
+    .badge.out { background: #fee2e2; color: #991b1b; }
+    .bar-wrap { width: 100px; background: var(--bg); height: 4px; border-radius: 2px; }
+    .bar-fill { height: 4px; border-radius: 2px; background: var(--ink); }
 
-    /* Toggle switch */
-    .toggle-wrap { display: flex; align-items: center; gap: 8px; }
-    .toggle { position: relative; width: 40px; height: 22px; cursor: pointer; }
-    .toggle input { opacity: 0; width: 0; height: 0; }
-    .toggle-slider {
-      position: absolute; inset: 0; border-radius: 22px;
-      background: #ddd; transition: background .25s;
-    }
-    .toggle-slider:before {
-      content: ''; position: absolute;
-      width: 16px; height: 16px; border-radius: 50%;
-      background: #fff; top: 3px; left: 3px;
-      transition: transform .25s; box-shadow: 0 1px 3px rgba(0,0,0,.2);
-    }
-    .toggle input:checked + .toggle-slider { background: var(--green); }
-    .toggle input:checked + .toggle-slider:before { transform: translateX(18px); }
-    .toggle-label { font-family: var(--sans); font-size: 11px; color: var(--mid); }
-
-    /* Action button */
-    .action-btn { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: .5px; color: var(--ink); border: 1px solid var(--rule); padding: 6px 12px; cursor: pointer; background: none; transition: all .15s; white-space: nowrap; }
-    .action-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-    .action-btn.danger { color: var(--red); border-color: #fca5a5; }
-    .action-btn.danger:hover { background: var(--red); color: #fff; border-color: var(--red); }
-
-    /* Activity feed */
+    /* ── FEED ── */
     .feed { background: var(--white); border: 1px solid var(--rule); margin-bottom: 32px; }
-    .feed-item { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--rule); }
+    .feed-item { display: grid; grid-template-columns: 8px 1fr auto; gap: 14px; align-items: center; padding: 13px 18px; border-bottom: 1px solid var(--rule); }
     .feed-item:last-child { border-bottom: none; }
     .feed-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
-    .feed-dot.wa  { background: #25D366; }
-    .feed-dot.view { background: var(--blue); }
-    .feed-dot.ev  { background: var(--amber); }
-    .feed-text { font-family: var(--sans); font-size: 12px; color: var(--ink); }
-    .feed-id { font-family: var(--sans); font-size: 11px; color: var(--light); font-weight: 500; }
-    .feed-time { font-family: var(--sans); font-size: 10px; color: var(--light); text-align: right; white-space: nowrap; }
-    .feed-empty { padding: 32px 18px; text-align: center; font-family: var(--sans); font-size: 12px; color: var(--light); }
+    .feed-dot.wa { background: #25D366; }
+    .feed-dot.ev { background: var(--amber); }
+    .feed-text { font-size: 12px; color: var(--ink); }
+    .feed-sub  { font-size: 11px; color: var(--light); margin-top: 1px; }
+    .feed-time { font-size: 10px; color: var(--light); text-align: right; white-space: nowrap; }
+    .feed-empty { padding: 32px 18px; text-align: center; font-size: 12px; color: var(--light); }
 
-    /* Chart */
+    /* ── CHART ── */
     .chart-wrap { background: var(--white); border: 1px solid var(--rule); padding: 24px; margin-bottom: 32px; }
-    .chart-bars { display: flex; align-items: flex-end; gap: 10px; height: 140px; padding-top: 16px; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 10px; height: 140px; }
     .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .chart-bar { width: 100%; background: var(--ink); border-radius: 2px 2px 0 0; min-height: 2px; transition: height .5s; }
-    .chart-bar.wa-bar  { background: #25D366; }
-    .chart-count { font-family: var(--sans); font-size: 10px; font-weight: 600; color: var(--mid); }
-    .chart-xlabel { font-family: var(--sans); font-size: 9px; color: var(--light); letter-spacing: .3px; text-align: center; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .chart-legend { display: flex; gap: 20px; margin-top: 16px; border-top: 1px solid var(--rule); padding-top: 14px; }
-    .chart-legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 11px; color: var(--mid); }
+    .chart-bar { width: 100%; background: var(--ink); border-radius: 2px 2px 0 0; min-height: 2px; }
+    .chart-bar.wa { background: #25D366; }
+    .chart-count { font-size: 10px; font-weight: 600; color: var(--mid); }
+    .chart-lbl { font-size: 9px; color: var(--light); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; }
+    .chart-legend { display: flex; gap: 20px; margin-top: 14px; border-top: 1px solid var(--rule); padding-top: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--mid); }
     .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* Inventory panel */
-    .inv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 32px; }
-    .inv-card { background: var(--white); border: 1px solid var(--rule); padding: 18px 16px; }
-    .inv-card-id { font-family: var(--sans); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 4px; }
-    .inv-card-name { font-family: var(--sans); font-size: 13px; color: var(--ink); margin-bottom: 12px; font-weight: 400; }
-    .inv-card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .inv-card-price { font-family: var(--sans); font-size: 11px; color: var(--mid); }
-
-    /* Notes area */
-    .notes-area { width: 100%; min-height: 100px; padding: 12px 14px; font-family: var(--sans); font-size: 13px; border: 1px solid var(--rule); outline: none; resize: vertical; color: var(--ink); background: var(--white); margin-bottom: 12px; }
+    /* ── NOTES ── */
+    .notes-area { width: 100%; min-height: 120px; padding: 14px; font-size: 13px; border: 1px solid var(--rule); outline: none; resize: vertical; color: var(--ink); background: var(--white); margin-bottom: 12px; }
     .notes-area:focus { border-color: var(--ink); }
-    .save-btn { background: var(--ink); color: #fff; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; }
+    .primary-btn { background: var(--ink); color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .admin-nav-link:not(.active):not(:last-of-type) { display: none; }
-    }
-    @media (max-width: 600px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px) {
       .admin-body { padding: 20px 16px; }
       .admin-nav { padding: 0 16px; }
-      .login-card { padding: 36px 24px; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .img-section { grid-template-columns: 1fr; }
+      .prod-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ LOGIN SCREEN ══ -->
+<!-- ══ LOGIN ══ -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="login-logo-name">Seth &amp; Co.</div>
@@ -217,185 +226,258 @@
       <button class="login-btn" type="submit">Sign In</button>
     </form>
     <div class="login-error" id="loginError">Incorrect username or password.</div>
-    <div class="login-note">This dashboard is for Seth &amp; Co. admin use only.<br>Unauthorized access is not permitted.</div>
+    <div class="login-note">Admin access only · Seth &amp; Co. 2025</div>
   </div>
 </div>
 
 <!-- ══ DASHBOARD ══ -->
 <div id="dashboard">
 
-  <!-- Admin Nav -->
   <nav class="admin-nav">
-    <div style="display:flex;align-items:center;gap:16px">
+    <div style="display:flex;align-items:center;gap:14px">
       <span class="admin-nav-logo">Seth &amp; Co.</span>
-      <span class="admin-nav-badge">Admin</span>
+      <span class="admin-badge">Admin</span>
     </div>
     <div class="admin-nav-right">
-      <span class="admin-nav-link active" onclick="showPage('overview')">Overview</span>
-      <span class="admin-nav-link" onclick="showPage('products')">Products</span>
-      <span class="admin-nav-link" onclick="showPage('inquiries')">Inquiries</span>
-      <span class="admin-nav-link" onclick="showPage('notes')">Notes</span>
+      <button class="admin-nav-link active" onclick="showPage('overview')">Overview</button>
+      <button class="admin-nav-link" onclick="showPage('products')">Products</button>
+      <button class="admin-nav-link" onclick="showPage('inquiries')">Inquiries</button>
+      <button class="admin-nav-link" onclick="showPage('notes')">Notes</button>
       <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
   </nav>
 
   <div class="admin-body">
 
-    <!-- ── OVERVIEW PAGE ── -->
+    <!-- ── OVERVIEW ── -->
     <div class="admin-page active" id="page-overview">
       <div class="page-header">
         <div class="page-title">Good day, Admin</div>
-        <div class="page-sub" id="lastUpdated">Loading dashboard...</div>
+        <div class="page-sub" id="lastUpdated">Loading…</div>
       </div>
-
-      <!-- Stat cards -->
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">Total Products</div>
-          <div class="stat-value" id="statTotal">7</div>
+          <div class="stat-value">7</div>
           <div class="stat-meta">Active product lines</div>
         </div>
-        <div class="stat-card accent-green">
+        <div class="stat-card g">
           <div class="stat-label">In Stock</div>
           <div class="stat-value" id="statInStock">—</div>
           <div class="stat-meta">Available to order</div>
         </div>
-        <div class="stat-card accent-red">
+        <div class="stat-card r">
           <div class="stat-label">Sold Out</div>
           <div class="stat-value" id="statSoldOut">—</div>
-          <div class="stat-meta">Restocking needed</div>
+          <div class="stat-meta">Needs restocking</div>
         </div>
-        <div class="stat-card accent-amber">
+        <div class="stat-card a">
           <div class="stat-label">WhatsApp Inquiries</div>
           <div class="stat-value" id="statInquiries">—</div>
           <div class="stat-meta">Total tracked</div>
         </div>
       </div>
-
-      <!-- Views chart -->
-      <div class="section-header">
-        <span class="section-title">Product Views</span>
-        <span class="section-action" onclick="clearViews()">Clear views data</span>
-      </div>
+      <div class="sec-hd"><span class="sec-title">Product Views & Inquiries</span><button class="sec-action" onclick="clearViews()">Clear data</button></div>
       <div class="chart-wrap">
         <div class="chart-bars" id="viewsChart"></div>
         <div class="chart-legend">
-          <div class="chart-legend-item"><div class="legend-dot" style="background:var(--ink)"></div>Page views</div>
-          <div class="chart-legend-item"><div class="legend-dot" style="background:#25D366"></div>WhatsApp inquiries</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--ink)"></div>Page views</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#25D366"></div>WhatsApp inquiries</div>
         </div>
       </div>
-
-      <!-- Quick inventory -->
-      <div class="section-header">
-        <span class="section-title">Quick Inventory</span>
-        <span class="section-action" onclick="showPage('products')">Manage all →</span>
-      </div>
-      <div class="inv-grid" id="quickInvGrid"></div>
-
-      <!-- Recent activity -->
-      <div class="section-header">
-        <span class="section-title">Recent Activity</span>
-        <span class="section-action" onclick="clearInquiries()">Clear log</span>
-      </div>
+      <div class="sec-hd"><span class="sec-title">Recent Activity</span><button class="sec-action" onclick="clearInquiries()">Clear log</button></div>
       <div class="feed" id="activityFeed"></div>
     </div>
 
-    <!-- ── PRODUCTS PAGE ── -->
+    <!-- ── PRODUCTS ── -->
     <div class="admin-page" id="page-products">
       <div class="page-header">
         <div class="page-title">Products</div>
-        <div class="page-sub">Manage stock status, view performance metrics</div>
+        <div class="page-sub">Click Edit on any product to update images, price, name, badge, and stock</div>
       </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Product Name</th>
-              <th>SKU</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Views</th>
-              <th>Inquiries</th>
-              <th>Performance</th>
-              <th>Stock Toggle</th>
-            </tr>
-          </thead>
-          <tbody id="productsTableBody"></tbody>
-        </table>
+      <!-- Image upload guide -->
+      <div class="img-guide">
+        <div class="img-guide-title">📸 How to add your product photos</div>
+        <div class="img-guide-steps">
+          1. Open <strong>Google Drive</strong> and upload your photo<br>
+          2. Right-click the file → <strong>Share</strong> → <strong>Anyone with the link</strong> → Copy<br>
+          3. Your link looks like: <code>https://drive.google.com/file/d/<strong>FILE_ID</strong>/view</code><br>
+          4. Convert to direct image URL by replacing with:
+          <span class="img-guide-url">https://drive.google.com/uc?export=view&amp;id=FILE_ID</span>
+          5. Paste that URL into the Front Image or Back Image field below
+        </div>
       </div>
 
-      <div style="background:var(--white);border:1px solid var(--rule);padding:20px 22px;margin-bottom:32px">
-        <div style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-bottom:8px">How stock toggle works</div>
-        <div style="font-family:var(--sans);font-size:12px;color:var(--mid);line-height:1.8">
-          Toggling stock status here instantly updates the main website (sethandco.online). When a product is marked Sold Out, the "Enquire on WhatsApp" button is hidden and the badge updates. Changes are saved automatically and persist until cleared.
+      <div class="prod-grid" id="productsGrid"></div>
+
+      <div style="background:var(--white);border:1px solid var(--rule);padding:18px 20px;margin-bottom:32px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-bottom:6px">How it works</div>
+        <div style="font-size:12px;color:var(--mid);line-height:1.9">
+          Changes you make here are saved to this browser and take effect on the website immediately. The main website always reads the latest settings from this admin panel.<br>
+          <strong>Front image</strong> shows by default. <strong>Back image</strong> appears when a customer hovers over the product card (like H&amp;M's website). Add both for the full experience.
         </div>
       </div>
     </div>
 
-    <!-- ── INQUIRIES PAGE ── -->
+    <!-- ── INQUIRIES ── -->
     <div class="admin-page" id="page-inquiries">
       <div class="page-header">
         <div class="page-title">WhatsApp Inquiries</div>
-        <div class="page-sub">Tracked each time a visitor taps "Enquire on WhatsApp" on a product</div>
+        <div class="page-sub">Logged each time a visitor clicks "Enquire on WhatsApp" on a product</div>
       </div>
-      <div class="section-header">
-        <span class="section-title">Inquiry Log</span>
-        <span class="section-action" onclick="clearInquiries()">Clear all</span>
-      </div>
+      <div class="sec-hd"><span class="sec-title">Inquiry Log</span><button class="sec-action" onclick="clearInquiries()">Clear all</button></div>
       <div class="feed" id="inquiryFeed"></div>
-
-      <div class="section-header" style="margin-top:32px">
-        <span class="section-title">Inquiries by Product</span>
-      </div>
-      <div class="chart-wrap">
-        <div class="chart-bars" id="inquiryChart"></div>
-      </div>
+      <div class="sec-hd" style="margin-top:32px"><span class="sec-title">Inquiries by Product</span></div>
+      <div class="chart-wrap"><div class="chart-bars" id="inquiryChart"></div></div>
     </div>
 
-    <!-- ── NOTES PAGE ── -->
+    <!-- ── NOTES ── -->
     <div class="admin-page" id="page-notes">
       <div class="page-header">
         <div class="page-title">Admin Notes</div>
-        <div class="page-sub">Private notes visible only in this dashboard</div>
+        <div class="page-sub">Private notes — restocking, orders, follow-ups</div>
       </div>
-      <div class="section-header">
-        <span class="section-title">Notes</span>
-      </div>
-      <textarea class="notes-area" id="adminNotes" placeholder="Type your notes here — restocking dates, order details, customer follow-ups..."></textarea>
-      <button class="save-btn" onclick="saveNotes()">Save Notes</button>
-      <span id="notesSaved" style="font-family:var(--sans);font-size:11px;color:var(--green);margin-left:12px;opacity:0;transition:opacity .3s"></span>
+      <textarea class="notes-area" id="adminNotes" placeholder="e.g. P006 Cool Moms Club restocking 200 units — expected June 20&#10;Customer enquired about size 5 for P001 — follow up on WhatsApp&#10;Update price for P004 to LKR 2,000..."></textarea>
+      <button class="primary-btn" onclick="saveNotes()">Save Notes</button>
+      <span id="notesSaved" style="font-size:11px;color:var(--green);margin-left:12px;opacity:0;transition:opacity .3s"></span>
     </div>
 
-  </div><!-- /admin-body -->
-</div><!-- /dashboard -->
+  </div>
+</div>
+
+<!-- ══ PRODUCT EDIT MODAL ══ -->
+<div class="modal-backdrop" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">Edit Product</div>
+        <div class="modal-id" id="modalId"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- Basic info -->
+      <div class="form-row-2">
+        <div>
+          <label class="form-label">Product ID</label>
+          <input class="form-input" id="fId" readonly/>
+        </div>
+        <div>
+          <label class="form-label">SKU</label>
+          <input class="form-input" id="fSku" placeholder="e.g. SGT-001"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Product Name</label>
+        <input class="form-input" id="fName" placeholder="e.g. Beaver Graphic Tee"/>
+      </div>
+      <div class="form-row-2">
+        <div>
+          <label class="form-label">Subtitle / Size range</label>
+          <input class="form-input" id="fSubtitle" placeholder="e.g. 2–5 Years"/>
+        </div>
+        <div>
+          <label class="form-label">Price (LKR)</label>
+          <input class="form-input" id="fPrice" type="number" placeholder="1800"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Badge</label>
+        <input class="form-input" id="fBadge" placeholder="New · Sale · Coming Soon · (leave empty to hide)"/>
+        <div class="form-hint">This label appears on the product card corner. Leave blank to hide it.</div>
+      </div>
+
+      <hr class="form-divider"/>
+
+      <!-- Images -->
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:16px">Product Images</div>
+
+      <div class="img-guide" style="margin-bottom:20px">
+        <div class="img-guide-title">How to get your Google Drive image URL</div>
+        <div class="img-guide-steps">
+          Upload photo to Google Drive → Right-click → Share → Anyone with link<br>
+          Copy the File ID from the share URL and format it as:<br>
+          <span class="img-guide-url">https://drive.google.com/uc?export=view&amp;id=YOUR_FILE_ID</span>
+        </div>
+      </div>
+
+      <div class="img-section">
+        <div class="img-slot">
+          <div class="img-slot-label">Front Image</div>
+          <div class="img-slot-desc">Main photo — shows by default</div>
+          <div class="img-preview" id="frontPreview">
+            <img id="frontPreviewImg" src="" alt=""/>
+            <div class="img-empty">Paste URL below<br>to preview</div>
+          </div>
+          <input class="form-input" id="fFrontImage" placeholder="https://drive.google.com/uc?export=view&id=..." oninput="previewImg('front')"/>
+        </div>
+        <div class="img-slot">
+          <div class="img-slot-label">Back Image <span style="font-size:9px;color:var(--light);font-weight:400">(optional)</span></div>
+          <div class="img-slot-desc">Shows on hover — H&amp;M effect</div>
+          <div class="img-preview" id="backPreview">
+            <img id="backPreviewImg" src="" alt=""/>
+            <div class="img-empty">Optional — shows when<br>customer hovers</div>
+          </div>
+          <input class="form-input" id="fBackImage" placeholder="https://drive.google.com/uc?export=view&id=..." oninput="previewImg('back')"/>
+        </div>
+      </div>
+
+      <hr class="form-divider"/>
+
+      <!-- Stock toggle -->
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-info-label">In Stock</div>
+          <div class="toggle-info-desc">When off, the Sold Out badge shows and enquire button is hidden on the website</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="fInStock" checked/>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="save-btn" onclick="saveProduct()">Save Changes</button>
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      <span class="save-confirm" id="saveConfirm">✓ Saved</span>
+    </div>
+  </div>
+</div>
 
 <script>
-  /* ═══════════════════════════════════════════
+  /* ═══════════════════════════════════════
      PRODUCT DEFINITIONS
-  ═══════════════════════════════════════════ */
+  ═══════════════════════════════════════ */
   var PRODUCTS = [
-    { id:'P001', name:'Beaver Graphic Tee',     price:1800, sku:'SGT-001', defaultStock:true  },
-    { id:'P002', name:'Best Dude Graphic Tee',  price:1800, sku:'SGT-002', defaultStock:true  },
-    { id:'P003', name:'My Uncle Is A Legend',   price:1800, sku:'SGT-003', defaultStock:true  },
-    { id:'P004', name:'My Aunt Is A Legend',    price:1800, sku:'SGT-004', defaultStock:true  },
-    { id:'P005', name:'Paw Patrol Sky Officer', price:1800, sku:'SGT-005', defaultStock:true  },
-    { id:'P006', name:'Cool Moms Club',         price:2800, sku:'SOT-006', defaultStock:false },
-    { id:'P007', name:'Cool Aunts Club',        price:2800, sku:'SOT-007', defaultStock:false }
+    { id:'P001', name:'Beaver Graphic Tee',     price:1800, sku:'SGT-001', subtitle:'2–5 Years', badge:'New',  defaultStock:true,
+      defaultFront:'https://drive.google.com/uc?export=view&id=1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT', defaultBack:'' },
+    { id:'P002', name:'Best Dude Graphic Tee',  price:1800, sku:'SGT-002', subtitle:'2–5 Years', badge:'New',  defaultStock:true,
+      defaultFront:'https://drive.google.com/uc?export=view&id=1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg', defaultBack:'' },
+    { id:'P003', name:'My Uncle Is A Legend',   price:1800, sku:'SGT-003', subtitle:'2–5 Years', badge:'New',  defaultStock:true,
+      defaultFront:'https://drive.google.com/uc?export=view&id=1p0MTz2_LX4qrhJw7HjRtnNSEpTY6BQ9b', defaultBack:'' },
+    { id:'P004', name:'My Aunt Is A Legend',    price:1800, sku:'SGT-004', subtitle:'2–5 Years', badge:'New',  defaultStock:true,
+      defaultFront:'https://drive.google.com/uc?export=view&id=1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1', defaultBack:'' },
+    { id:'P005', name:'Paw Patrol Sky Officer', price:1800, sku:'SGT-005', subtitle:'2–5 Years', badge:'New',  defaultStock:true,
+      defaultFront:'https://drive.google.com/uc?export=view&id=1yARcjcIsGugv2aVyhgiEnThP04pF91Ud', defaultBack:'' },
+    { id:'P006', name:'Cool Moms Club',         price:2800, sku:'SOT-006', subtitle:'Oversized Tee', badge:'Sold Out', defaultStock:false,
+      defaultFront:'https://drive.google.com/uc?export=view&id=15U9kat5RF-rp8oN0aphJdULlFPsgFZWg', defaultBack:'' },
+    { id:'P007', name:'Cool Aunts Club',        price:2800, sku:'SOT-007', subtitle:'Oversized Tee', badge:'Sold Out', defaultStock:false,
+      defaultFront:'https://drive.google.com/uc?export=view&id=19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_', defaultBack:'' }
   ];
 
-  /* ═══════════════════════════════════════════
-     AUTH — simple client-side gate
-     (For production, replace with a proper server session)
-  ═══════════════════════════════════════════ */
-  var ADMIN_CREDENTIALS = { user: 'admin', pass: 'sethco2025' };
+  /* ═══════════════════════════════════════
+     AUTH
+  ═══════════════════════════════════════ */
+  var CREDS = { user:'admin', pass:'sethco2025' };
 
   function handleLogin(e) {
     e.preventDefault();
     var u = document.getElementById('loginUser').value.trim();
     var p = document.getElementById('loginPass').value;
-    if (u === ADMIN_CREDENTIALS.user && p === ADMIN_CREDENTIALS.pass) {
+    if (u === CREDS.user && p === CREDS.pass) {
       localStorage.setItem('sac_admin_session', Date.now().toString());
       showDashboard();
     } else {
@@ -404,10 +486,9 @@
   }
 
   function checkSession() {
-    var session = localStorage.getItem('sac_admin_session');
-    if (!session) return false;
-    var age = Date.now() - parseInt(session, 10);
-    if (age > 8 * 60 * 60 * 1000) { localStorage.removeItem('sac_admin_session'); return false; }
+    var s = localStorage.getItem('sac_admin_session');
+    if (!s) return false;
+    if (Date.now() - parseInt(s,10) > 8*3600000) { localStorage.removeItem('sac_admin_session'); return false; }
     return true;
   }
 
@@ -419,41 +500,49 @@
     document.getElementById('loginPass').value = '';
   }
 
-  /* ═══════════════════════════════════════════
+  /* ═══════════════════════════════════════
      NAVIGATION
-  ═══════════════════════════════════════════ */
-  function showPage(pageId) {
+  ═══════════════════════════════════════ */
+  function showPage(id) {
     document.querySelectorAll('.admin-page').forEach(function(p){ p.classList.remove('active'); });
     document.querySelectorAll('.admin-nav-link').forEach(function(l){ l.classList.remove('active'); });
-    document.getElementById('page-' + pageId).classList.add('active');
-    document.querySelectorAll('.admin-nav-link').forEach(function(l){
-      if (l.getAttribute('onclick') && l.getAttribute('onclick').indexOf(pageId) !== -1) l.classList.add('active');
-    });
-    if (pageId === 'overview')   renderOverview();
-    if (pageId === 'products')   renderProducts();
-    if (pageId === 'inquiries')  renderInquiries();
-    if (pageId === 'notes')      loadNotes();
+    document.getElementById('page-' + id).classList.add('active');
+    event.currentTarget && event.currentTarget.classList.add('active');
+    if (id === 'overview')  renderOverview();
+    if (id === 'products')  renderProducts();
+    if (id === 'inquiries') renderInquiries();
+    if (id === 'notes')     loadNotes();
   }
 
-  /* ═══════════════════════════════════════════
+  /* ═══════════════════════════════════════
      DATA HELPERS
-  ═══════════════════════════════════════════ */
-  function getInventory() {
-    var inv = JSON.parse(localStorage.getItem('sac_inventory') || '{}');
-    PRODUCTS.forEach(function(p) { if (inv[p.id] === undefined) inv[p.id] = p.defaultStock; });
-    return inv;
+  ═══════════════════════════════════════ */
+  function getInv()      { var i=JSON.parse(localStorage.getItem('sac_inventory')||'{}'); PRODUCTS.forEach(function(p){if(i[p.id]===undefined)i[p.id]=p.defaultStock;}); return i; }
+  function getOverrides(){ return JSON.parse(localStorage.getItem('sac_products')||'{}'); }
+  function getViews()    { return JSON.parse(localStorage.getItem('sac_views')||'{}'); }
+  function getInquiries(){ return JSON.parse(localStorage.getItem('sac_inquiries')||'[]'); }
+  function getEvents()   { return JSON.parse(localStorage.getItem('sac_events')||'[]'); }
+  function saveInv(inv)  { localStorage.setItem('sac_inventory', JSON.stringify(inv)); }
+  function saveOverrides(o){ localStorage.setItem('sac_products', JSON.stringify(o)); }
+
+  function productData(id) {
+    var base = PRODUCTS.find(function(p){ return p.id === id; }) || {};
+    var ov = getOverrides()[id] || {};
+    return {
+      id:         id,
+      name:       ov.name       || base.name       || '',
+      price:      ov.price      !== undefined ? ov.price  : base.price,
+      sku:        ov.sku        || base.sku        || '',
+      subtitle:   ov.subtitle   || base.subtitle   || '',
+      badge:      ov.badge      !== undefined ? ov.badge  : base.badge,
+      frontImage: ov.frontImage || base.defaultFront || '',
+      backImage:  ov.backImage  !== undefined ? ov.backImage : base.defaultBack,
+      inStock:    getInv()[id]  !== undefined ? getInv()[id] : base.defaultStock
+    };
   }
-  function saveInventory(inv) { localStorage.setItem('sac_inventory', JSON.stringify(inv)); }
 
-  function getViews()     { return JSON.parse(localStorage.getItem('sac_views')     || '{}'); }
-  function getInquiries() { return JSON.parse(localStorage.getItem('sac_inquiries') || '[]'); }
-  function getEvents()    { return JSON.parse(localStorage.getItem('sac_events')    || '[]'); }
-
-  function viewsForProduct(id)     { return getViews()[id] || 0; }
-  function inquiriesForProduct(id) { return getInquiries().filter(function(i){ return i.id === id; }).length; }
-
-  function maxViews() { var v = getViews(); return Math.max(1, Math.max.apply(null, PRODUCTS.map(function(p){ return v[p.id] || 0; }))); }
-  function maxInquiries() { return Math.max(1, Math.max.apply(null, PRODUCTS.map(function(p){ return inquiriesForProduct(p.id); }))); }
+  function inquiriesFor(id){ return getInquiries().filter(function(i){ return i.id===id; }).length; }
+  function viewsFor(id)    { return getViews()[id] || 0; }
 
   function relTime(ts) {
     var d = Date.now() - ts;
@@ -463,209 +552,219 @@
     return Math.floor(d/86400000) + 'd ago';
   }
 
-  /* ═══════════════════════════════════════════
-     OVERVIEW RENDER
-  ═══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════
+     OVERVIEW
+  ═══════════════════════════════════════ */
   function renderOverview() {
-    var inv = getInventory();
-    var inStock   = PRODUCTS.filter(function(p){ return inv[p.id]; }).length;
-    var soldOut   = PRODUCTS.length - inStock;
-    var inquiries = getInquiries().length;
-
-    document.getElementById('statTotal').textContent    = PRODUCTS.length;
+    var inv = getInv();
+    var inStock = PRODUCTS.filter(function(p){ return inv[p.id]; }).length;
     document.getElementById('statInStock').textContent  = inStock;
-    document.getElementById('statSoldOut').textContent  = soldOut;
-    document.getElementById('statInquiries').textContent = inquiries;
-    document.getElementById('lastUpdated').textContent  = 'Last refreshed: ' + new Date().toLocaleTimeString('en-LK', {hour:'2-digit', minute:'2-digit'});
-
-    renderViewsChart();
-    renderQuickInv();
+    document.getElementById('statSoldOut').textContent  = PRODUCTS.length - inStock;
+    document.getElementById('statInquiries').textContent = getInquiries().length;
+    document.getElementById('lastUpdated').textContent  = 'Refreshed ' + new Date().toLocaleTimeString('en-LK',{hour:'2-digit',minute:'2-digit'});
+    renderChart('viewsChart', false);
     renderActivityFeed();
   }
 
-  function renderViewsChart() {
-    var max = maxViews();
-    var maxInq = maxInquiries();
-    var combined = Math.max(max, maxInq, 1);
-    var html = PRODUCTS.map(function(p) {
-      var v = viewsForProduct(p.id);
-      var inq = inquiriesForProduct(p.id);
+  function renderChart(elId, inquiryOnly) {
+    var maxV = Math.max(1, Math.max.apply(null, PRODUCTS.map(function(p){ return viewsFor(p.id); })));
+    var maxI = Math.max(1, Math.max.apply(null, PRODUCTS.map(function(p){ return inquiriesFor(p.id); })));
+    var combined = Math.max(maxV, maxI, 1);
+    document.getElementById(elId).innerHTML = PRODUCTS.map(function(p) {
+      var v = viewsFor(p.id), inq = inquiriesFor(p.id);
       var vH = Math.round((v / combined) * 120);
       var iH = Math.round((inq / combined) * 120);
       return '<div class="chart-col">' +
         '<div style="display:flex;align-items:flex-end;gap:3px;height:120px">' +
-          '<div class="chart-bar" style="height:' + vH + 'px;flex:1" title="' + v + ' views"></div>' +
-          '<div class="chart-bar wa-bar" style="height:' + iH + 'px;flex:1" title="' + inq + ' inquiries"></div>' +
+          (inquiryOnly ? '' : '<div class="chart-bar" style="height:'+vH+'px;flex:1" title="'+v+' views"></div>') +
+          '<div class="chart-bar wa" style="height:'+Math.max(iH,2)+'px;flex:1" title="'+inq+' inquiries"></div>' +
         '</div>' +
-        '<div class="chart-count">' + v + '</div>' +
-        '<div class="chart-xlabel">' + p.id + '</div>' +
-      '</div>';
-    }).join('');
-    document.getElementById('viewsChart').innerHTML = html;
-  }
-
-  function renderQuickInv() {
-    var inv = getInventory();
-    document.getElementById('quickInvGrid').innerHTML = PRODUCTS.map(function(p) {
-      var inStock = inv[p.id];
-      return '<div class="inv-card">' +
-        '<div class="inv-card-id">' + p.id + ' · ' + p.sku + '</div>' +
-        '<div class="inv-card-name">' + p.name + '</div>' +
-        '<div class="inv-card-footer">' +
-          '<span class="inv-card-price">LKR ' + p.price.toLocaleString() + '</span>' +
-          '<label class="toggle" title="Toggle stock">' +
-            '<input type="checkbox" ' + (inStock ? 'checked' : '') + ' onchange="toggleStock(\'' + p.id + '\',this.checked)">' +
-            '<span class="toggle-slider"></span>' +
-          '</label>' +
-        '</div>' +
+        '<div class="chart-count">' + (inquiryOnly ? inq : v) + '</div>' +
+        '<div class="chart-lbl">' + p.id + '</div>' +
       '</div>';
     }).join('');
   }
 
   function renderActivityFeed() {
-    var inquiries = getInquiries().slice(0, 8);
-    var events    = getEvents().slice(0, 5);
     var all = [];
-    inquiries.forEach(function(i){ all.push({ type:'wa', time:i.time, text: i.name + ' — WhatsApp inquiry', id: i.id }); });
-    events.forEach(function(e){
-      if (e.event === 'hero_cta_click') all.push({ type:'ev', time:e.time, text:'Hero CTA clicked', id:'' });
-      if (e.event === 'whatsapp_contact') all.push({ type:'wa', time:e.time, text:'General WhatsApp contact', id:'' });
-      if (e.event === 'newsletter_subscribe') all.push({ type:'ev', time:e.time, text:'Newsletter subscription', id:'' });
+    getInquiries().slice(0,8).forEach(function(i){ all.push({dot:'wa', text:i.name, sub:i.id+' · WhatsApp', time:i.time}); });
+    getEvents().slice(0,5).forEach(function(e){
+      var t = e.event==='newsletter_subscribe'?'Newsletter sign-up':e.event==='hero_cta_click'?'Hero CTA clicked':e.event==='whatsapp_contact'?'General WhatsApp contact':e.event;
+      all.push({dot:'ev', text:t, sub:'', time:e.time});
     });
-    all.sort(function(a,b){ return b.time - a.time; });
+    all.sort(function(a,b){ return b.time-a.time; });
     var feed = document.getElementById('activityFeed');
-    if (!all.length) { feed.innerHTML = '<div class="feed-empty">No activity yet — share the website to start tracking!</div>'; return; }
-    feed.innerHTML = all.slice(0, 12).map(function(item) {
-      return '<div class="feed-item">' +
-        '<div class="feed-dot ' + item.type + '"></div>' +
-        '<div><div class="feed-text">' + item.text + '</div>' + (item.id ? '<div class="feed-id">' + item.id + '</div>' : '') + '</div>' +
-        '<div class="feed-time">' + relTime(item.time) + '</div>' +
+    if (!all.length) { feed.innerHTML='<div class="feed-empty">No activity yet — share the website to start tracking!</div>'; return; }
+    feed.innerHTML = all.slice(0,12).map(function(item) {
+      return '<div class="feed-item"><div class="feed-dot '+item.dot+'"></div>' +
+        '<div><div class="feed-text">'+item.text+'</div>'+(item.sub?'<div class="feed-sub">'+item.sub+'</div>':'')+'</div>' +
+        '<div class="feed-time">'+relTime(item.time)+'</div></div>';
+    }).join('');
+  }
+
+  /* ═══════════════════════════════════════
+     PRODUCTS PAGE
+  ═══════════════════════════════════════ */
+  function renderProducts() {
+    var inv = getInv();
+    document.getElementById('productsGrid').innerHTML = PRODUCTS.map(function(p) {
+      var d = productData(p.id);
+      var inStock = inv[p.id];
+      return '<div class="prod-card">' +
+        '<div class="prod-card-img">' +
+          '<img src="'+d.frontImage+'" alt="'+d.name+'" onerror="this.style.opacity=.3"/>' +
+          (d.backImage ? '<img class="pc-img-back-thumb" src="'+d.backImage+'" alt="'+d.name+' back"/>' : '') +
+          (d.badge ? '<div class="prod-card-badge'+(d.badge.toLowerCase().includes('sold')?' sold':'')+'">'+d.badge+'</div>' : '') +
+        '</div>' +
+        '<div class="prod-card-info">' +
+          '<div class="prod-card-id">'+d.id+' · '+d.sku+'</div>' +
+          '<div class="prod-card-name">'+d.name+'</div>' +
+          '<div class="prod-card-meta">' +
+            '<span class="prod-card-price">LKR '+Number(d.price).toLocaleString()+'</span>' +
+            '<span class="stock-pill '+(inStock?'in':'out')+'">'+(inStock?'In Stock':'Sold Out')+'</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="prod-card-actions">' +
+          '<button class="edit-btn" onclick="openModal(\''+d.id+'\')">Edit Product</button>' +
+        '</div>' +
       '</div>';
     }).join('');
   }
 
-  /* ═══════════════════════════════════════════
-     PRODUCTS TABLE
-  ═══════════════════════════════════════════ */
-  function renderProducts() {
-    var inv = getInventory();
-    var maxV = maxViews();
-    var maxI = maxInquiries();
-    document.getElementById('productsTableBody').innerHTML = PRODUCTS.map(function(p, i) {
-      var inStock = inv[p.id];
-      var v = viewsForProduct(p.id);
-      var inq = inquiriesForProduct(p.id);
-      var perf = Math.max(v, inq);
-      var perfPct = maxV ? Math.round((perf / Math.max(maxV, maxI, 1)) * 100) : 0;
-      return '<tr>' +
-        '<td style="font-weight:500;color:var(--light)">' + p.id + '</td>' +
-        '<td style="font-weight:400">' + p.name + '</td>' +
-        '<td style="color:var(--mid);font-size:11px">' + p.sku + '</td>' +
-        '<td>LKR ' + p.price.toLocaleString() + '</td>' +
-        '<td><span class="badge ' + (inStock ? 'in-stock' : 'sold-out') + '" id="status-' + p.id + '">' + (inStock ? 'In Stock' : 'Sold Out') + '</span></td>' +
-        '<td style="font-variant-numeric:tabular-nums">' + v + '</td>' +
-        '<td style="font-variant-numeric:tabular-nums;color:' + (inq > 0 ? '#166534' : 'var(--mid)') + ';font-weight:' + (inq > 0 ? '600' : '400') + '">' + inq + '</td>' +
-        '<td><div class="bar-wrap"><div class="bar-fill" style="width:' + perfPct + '%"></div></div></td>' +
-        '<td><label class="toggle-wrap">' +
-          '<label class="toggle">' +
-            '<input type="checkbox" ' + (inStock ? 'checked' : '') + ' onchange="toggleStock(\'' + p.id + '\',this.checked,true)">' +
-            '<span class="toggle-slider"></span>' +
-          '</label>' +
-          '<span class="toggle-label">' + (inStock ? 'In stock' : 'Sold out') + '</span>' +
-        '</label></td>' +
-      '</tr>';
-    }).join('');
+  /* ═══════════════════════════════════════
+     PRODUCT EDIT MODAL
+  ═══════════════════════════════════════ */
+  var currentEditId = null;
+
+  function openModal(id) {
+    currentEditId = id;
+    var d = productData(id);
+    document.getElementById('modalTitle').textContent = d.name;
+    document.getElementById('modalId').textContent = d.id + ' · ' + d.sku;
+    document.getElementById('fId').value       = d.id;
+    document.getElementById('fSku').value      = d.sku;
+    document.getElementById('fName').value     = d.name;
+    document.getElementById('fSubtitle').value = d.subtitle;
+    document.getElementById('fPrice').value    = d.price;
+    document.getElementById('fBadge').value    = d.badge || '';
+    document.getElementById('fFrontImage').value = d.frontImage || '';
+    document.getElementById('fBackImage').value  = d.backImage  || '';
+    document.getElementById('fInStock').checked  = d.inStock;
+    previewImg('front');
+    previewImg('back');
+    document.getElementById('saveConfirm').style.opacity = '0';
+    document.getElementById('productModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 
-  function toggleStock(productId, isInStock, rerenderTable) {
-    var inv = getInventory();
-    inv[productId] = isInStock;
-    saveInventory(inv);
-    if (rerenderTable) renderProducts();
-    renderQuickInv();
-    renderOverview();
-    var statusEl = document.getElementById('status-' + productId);
-    if (statusEl) { statusEl.textContent = isInStock ? 'In Stock' : 'Sold Out'; statusEl.className = 'badge ' + (isInStock ? 'in-stock' : 'sold-out'); }
+  function closeModal() {
+    document.getElementById('productModal').classList.remove('open');
+    document.body.style.overflow = '';
+    currentEditId = null;
   }
 
-  /* ═══════════════════════════════════════════
+  function previewImg(side) {
+    var url = document.getElementById('f' + (side==='front'?'Front':'Back') + 'Image').value.trim();
+    var preview = document.getElementById(side + 'Preview');
+    var img     = document.getElementById(side + 'PreviewImg');
+    if (url) {
+      img.src = url;
+      img.onload  = function(){ preview.classList.add('has-image'); };
+      img.onerror = function(){ preview.classList.remove('has-image'); };
+    } else {
+      preview.classList.remove('has-image');
+      img.src = '';
+    }
+  }
+
+  function saveProduct() {
+    if (!currentEditId) return;
+    var overrides = getOverrides();
+    if (!overrides[currentEditId]) overrides[currentEditId] = {};
+    var o = overrides[currentEditId];
+    o.name       = document.getElementById('fName').value.trim();
+    o.sku        = document.getElementById('fSku').value.trim();
+    o.subtitle   = document.getElementById('fSubtitle').value.trim();
+    o.price      = parseFloat(document.getElementById('fPrice').value) || 0;
+    o.badge      = document.getElementById('fBadge').value.trim();
+    o.frontImage = document.getElementById('fFrontImage').value.trim();
+    o.backImage  = document.getElementById('fBackImage').value.trim();
+    saveOverrides(overrides);
+
+    var inv = getInv();
+    inv[currentEditId] = document.getElementById('fInStock').checked;
+    saveInv(inv);
+
+    var confirm = document.getElementById('saveConfirm');
+    confirm.style.opacity = '1';
+    setTimeout(function(){ confirm.style.opacity = '0'; }, 2500);
+    renderProducts();
+  }
+
+  /* close modal on backdrop click */
+  document.getElementById('productModal').addEventListener('click', function(e){
+    if (e.target === this) closeModal();
+  });
+
+  /* ═══════════════════════════════════════
      INQUIRIES PAGE
-  ═══════════════════════════════════════════ */
+  ═══════════════════════════════════════ */
   function renderInquiries() {
     var inquiries = getInquiries();
     var feed = document.getElementById('inquiryFeed');
     if (!inquiries.length) {
-      feed.innerHTML = '<div class="feed-empty">No WhatsApp inquiries tracked yet. Inquiries are recorded when visitors click "Enquire on WhatsApp" on any product.</div>';
+      feed.innerHTML = '<div class="feed-empty">No WhatsApp inquiries yet. They appear here when visitors click "Enquire on WhatsApp" on a product.</div>';
     } else {
-      feed.innerHTML = inquiries.map(function(item) {
-        return '<div class="feed-item">' +
-          '<div class="feed-dot wa"></div>' +
-          '<div><div class="feed-text">' + item.name + '</div><div class="feed-id">' + item.id + ' · WhatsApp</div></div>' +
-          '<div class="feed-time">' + relTime(item.time) + '<br>' + new Date(item.time).toLocaleDateString('en-LK') + '</div>' +
-        '</div>';
+      feed.innerHTML = inquiries.map(function(i) {
+        return '<div class="feed-item"><div class="feed-dot wa"></div>' +
+          '<div><div class="feed-text">'+i.name+'</div><div class="feed-sub">'+i.id+' · WhatsApp · '+new Date(i.time).toLocaleDateString('en-LK')+'</div></div>' +
+          '<div class="feed-time">'+relTime(i.time)+'</div></div>';
       }).join('');
     }
-    var maxI = maxInquiries();
-    document.getElementById('inquiryChart').innerHTML = PRODUCTS.map(function(p) {
-      var inq = inquiriesForProduct(p.id);
-      var h = Math.round((inq / maxI) * 120);
-      return '<div class="chart-col">' +
-        '<div style="height:120px;display:flex;align-items:flex-end">' +
-          '<div class="chart-bar wa-bar" style="height:' + Math.max(h, 2) + 'px;flex:1"></div>' +
-        '</div>' +
-        '<div class="chart-count">' + inq + '</div>' +
-        '<div class="chart-xlabel">' + p.id + '</div>' +
-      '</div>';
-    }).join('');
+    renderChart('inquiryChart', true);
   }
 
-  /* ═══════════════════════════════════════════
+  /* ═══════════════════════════════════════
      NOTES
-  ═══════════════════════════════════════════ */
-  function loadNotes() {
-    document.getElementById('adminNotes').value = localStorage.getItem('sac_admin_notes') || '';
-  }
+  ═══════════════════════════════════════ */
+  function loadNotes() { document.getElementById('adminNotes').value = localStorage.getItem('sac_admin_notes') || ''; }
   function saveNotes() {
     localStorage.setItem('sac_admin_notes', document.getElementById('adminNotes').value);
-    var saved = document.getElementById('notesSaved');
-    saved.textContent = '✓ Saved'; saved.style.opacity = '1';
-    setTimeout(function(){ saved.style.opacity = '0'; }, 2000);
+    var el = document.getElementById('notesSaved');
+    el.textContent = '✓ Saved'; el.style.opacity = '1';
+    setTimeout(function(){ el.style.opacity='0'; }, 2000);
   }
 
-  /* ═══════════════════════════════════════════
+  /* ═══════════════════════════════════════
      CLEAR ACTIONS
-  ═══════════════════════════════════════════ */
+  ═══════════════════════════════════════ */
   function clearViews() {
-    if (!confirm('Clear all view counts? This cannot be undone.')) return;
+    if (!confirm('Clear all view counts?')) return;
     localStorage.removeItem('sac_views');
     renderOverview();
   }
   function clearInquiries() {
-    if (!confirm('Clear all inquiry data? This cannot be undone.')) return;
+    if (!confirm('Clear all inquiry & event data?')) return;
     localStorage.removeItem('sac_inquiries');
     localStorage.removeItem('sac_events');
     renderOverview();
-    renderInquiries();
+    var f = document.getElementById('inquiryFeed');
+    if (f) renderInquiries();
   }
 
-  /* ═══════════════════════════════════════════
-     SHOW DASHBOARD
-  ═══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════
+     INIT
+  ═══════════════════════════════════════ */
   function showDashboard() {
-    document.getElementById('loginScreen').style.display  = 'none';
-    document.getElementById('dashboard').style.display    = 'block';
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display   = 'block';
     renderOverview();
   }
 
-  /* ═══════════════════════════════════════════
-     INIT
-  ═══════════════════════════════════════════ */
-  if (checkSession()) { showDashboard(); }
+  if (checkSession()) showDashboard();
 
-  /* Auto-refresh overview every 60s */
   setInterval(function() {
-    var active = document.querySelector('.admin-page.active');
-    if (active && active.id === 'page-overview') renderOverview();
+    if (document.querySelector('#page-overview.active')) renderOverview();
   }, 60000);
 </script>
 </body>
