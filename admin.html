@@ -200,6 +200,25 @@
     .notes-area:focus { border-color: var(--ink); }
     .primary-btn { background: var(--ink); color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; }
 
+    /* ── UPLOAD ── */
+    .upload-zone { border: 2px dashed var(--rule); padding: 18px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; background: var(--bg); position: relative; }
+    .upload-zone:hover, .upload-zone.drag { border-color: var(--ink); background: #f0f0f0; }
+    .upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .upload-zone-text { font-size: 12px; color: var(--mid); pointer-events: none; }
+    .upload-zone-text strong { display: block; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+    .upload-progress { display: none; height: 3px; background: var(--rule); margin-top: 8px; }
+    .upload-progress-bar { height: 100%; background: var(--ink); width: 0; transition: width .3s; }
+    .upload-status { font-size: 11px; margin-top: 6px; display: none; }
+    .upload-status.ok  { color: var(--green); }
+    .upload-status.err { color: var(--red); }
+    .token-row { display: flex; gap: 8px; align-items: stretch; }
+    .token-row .form-input { flex: 1; font-family: monospace; font-size: 12px; }
+    .token-save-btn { padding: 0 20px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; white-space: nowrap; }
+    .token-save-btn:hover { background: #333; }
+    .token-status { font-size: 11px; color: var(--green); margin-top: 6px; display: none; }
+    .settings-section { background: var(--white); border: 1px solid var(--rule); padding: 24px; margin-bottom: 24px; }
+    .settings-section-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 16px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 640px) {
@@ -243,6 +262,7 @@
       <button class="admin-nav-link" onclick="showPage('products')">Products</button>
       <button class="admin-nav-link" onclick="showPage('inquiries')">Inquiries</button>
       <button class="admin-nav-link" onclick="showPage('notes')">Notes</button>
+      <button class="admin-nav-link" onclick="showPage('settings')">Settings</button>
       <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
   </nav>
@@ -296,16 +316,12 @@
         <div class="page-sub">Click Edit on any product to update images, price, name, badge, and stock</div>
       </div>
 
-      <!-- Image upload guide -->
-      <div class="img-guide">
-        <div class="img-guide-title">📸 How to add your product photos</div>
-        <div class="img-guide-steps">
-          1. Open <strong>Google Drive</strong> and upload your photo<br>
-          2. Right-click the file → <strong>Share</strong> → <strong>Anyone with the link</strong> → Copy<br>
-          3. Your link looks like: <code>https://drive.google.com/file/d/<strong>FILE_ID</strong>/view</code><br>
-          4. Convert to direct image URL by replacing with:
-          <span class="img-guide-url">https://drive.google.com/uc?export=view&amp;id=FILE_ID</span>
-          5. Paste that URL into the Front Image or Back Image field below
+      <!-- Quick upload banner -->
+      <div id="uploadBanner" class="img-guide" style="background:#f0fdf4;border-color:#86efac">
+        <div class="img-guide-title" style="color:#166534">Direct Photo Upload</div>
+        <div class="img-guide-steps" style="color:#15803d">
+          Click <strong>Edit</strong> on any product, then use the <strong>Upload Photo</strong> button to pick a file from your computer — it goes straight to the website.<br>
+          <span id="uploadBannerToken" style="color:#dc2626;font-weight:500"></span>
         </div>
       </div>
 
@@ -341,6 +357,38 @@
       <textarea class="notes-area" id="adminNotes" placeholder="e.g. P006 Cool Moms Club restocking 200 units — expected June 20&#10;Customer enquired about size 5 for P001 — follow up on WhatsApp&#10;Update price for P004 to LKR 2,000..."></textarea>
       <button class="primary-btn" onclick="saveNotes()">Save Notes</button>
       <span id="notesSaved" style="font-size:11px;color:var(--green);margin-left:12px;opacity:0;transition:opacity .3s"></span>
+    </div>
+
+    <!-- ── SETTINGS ── -->
+    <div class="admin-page" id="page-settings">
+      <div class="page-header">
+        <div class="page-title">Settings</div>
+        <div class="page-sub">Configure photo uploads and admin preferences</div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">GitHub Photo Upload Token</div>
+        <p style="font-size:12px;color:var(--mid);line-height:1.8;margin-bottom:16px">
+          Enter your GitHub Personal Access Token once here. This allows the admin panel to upload product photos directly to the website — no technical steps needed.<br><br>
+          <strong>How to get a token:</strong><br>
+          1. Go to <strong>github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)</strong><br>
+          2. Click <strong>Generate new token</strong> → give it a name like "Seth & Co Admin"<br>
+          3. Tick <strong>repo</strong> scope → click Generate<br>
+          4. Copy the token (starts with <code>ghp_</code>) and paste below
+        </p>
+        <div class="token-row">
+          <input class="form-input" type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off"/>
+          <button class="token-save-btn" onclick="saveToken()">Save Token</button>
+        </div>
+        <div class="token-status" id="tokenStatus">✓ Token saved — photo uploads are now enabled</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--light)">Stored only in this browser. Never shared or transmitted anywhere except GitHub's API.</div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Reset All Data</div>
+        <p style="font-size:12px;color:var(--mid);margin-bottom:16px">Clear all locally stored overrides and restore products to their defaults.</p>
+        <button class="primary-btn" style="background:var(--red)" onclick="resetAllData()">Reset Product Overrides</button>
+      </div>
     </div>
 
   </div>
@@ -394,24 +442,22 @@
       <!-- Images -->
       <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:16px">Product Images</div>
 
-      <div class="img-guide" style="margin-bottom:20px">
-        <div class="img-guide-title">How to get your Google Drive image URL</div>
-        <div class="img-guide-steps">
-          Upload photo to Google Drive → Right-click → Share → Anyone with link<br>
-          Copy the File ID from the share URL and format it as:<br>
-          <span class="img-guide-url">https://drive.google.com/uc?export=view&amp;id=YOUR_FILE_ID</span>
-        </div>
-      </div>
-
       <div class="img-section">
         <div class="img-slot">
           <div class="img-slot-label">Front Image</div>
           <div class="img-slot-desc">Main photo — shows by default</div>
           <div class="img-preview" id="frontPreview">
             <img id="frontPreviewImg" src="" alt=""/>
-            <div class="img-empty">Paste URL below<br>to preview</div>
+            <div class="img-empty">Upload or paste URL<br>to preview</div>
           </div>
-          <input class="form-input" id="fFrontImage" placeholder="https://drive.google.com/uc?export=view&id=..." oninput="previewImg('front')"/>
+          <!-- Upload zone -->
+          <div class="upload-zone" id="frontUploadZone" ondragover="handleDrag(event,'front')" ondragleave="handleDragLeave(event,'front')" ondrop="handleDrop(event,'front')">
+            <input type="file" accept="image/*" onchange="handleFileSelect(event,'front')"/>
+            <div class="upload-zone-text"><strong>Click or drag a photo here</strong>Uploads directly to the website</div>
+          </div>
+          <div class="upload-progress" id="frontProgress"><div class="upload-progress-bar" id="frontProgressBar"></div></div>
+          <div class="upload-status" id="frontStatus"></div>
+          <input class="form-input" id="fFrontImage" placeholder="Or paste image URL…" oninput="previewImg('front')" style="margin-top:8px"/>
         </div>
         <div class="img-slot">
           <div class="img-slot-label">Back Image <span style="font-size:9px;color:var(--light);font-weight:400">(optional)</span></div>
@@ -420,7 +466,13 @@
             <img id="backPreviewImg" src="" alt=""/>
             <div class="img-empty">Optional — shows when<br>customer hovers</div>
           </div>
-          <input class="form-input" id="fBackImage" placeholder="https://drive.google.com/uc?export=view&id=..." oninput="previewImg('back')"/>
+          <div class="upload-zone" id="backUploadZone" ondragover="handleDrag(event,'back')" ondragleave="handleDragLeave(event,'back')" ondrop="handleDrop(event,'back')">
+            <input type="file" accept="image/*" onchange="handleFileSelect(event,'back')"/>
+            <div class="upload-zone-text"><strong>Click or drag a back photo</strong>Optional — for the hover effect</div>
+          </div>
+          <div class="upload-progress" id="backProgress"><div class="upload-progress-bar" id="backProgressBar"></div></div>
+          <div class="upload-status" id="backStatus"></div>
+          <input class="form-input" id="fBackImage" placeholder="Or paste image URL…" oninput="previewImg('back')" style="margin-top:8px"/>
         </div>
       </div>
 
@@ -509,9 +561,10 @@
     document.getElementById('page-' + id).classList.add('active');
     event.currentTarget && event.currentTarget.classList.add('active');
     if (id === 'overview')  renderOverview();
-    if (id === 'products')  renderProducts();
+    if (id === 'products')  { renderProducts(); updateUploadBanner(); }
     if (id === 'inquiries') renderInquiries();
     if (id === 'notes')     loadNotes();
+    if (id === 'settings')  { var t = getToken(); if (t) document.getElementById('githubToken').value = t; }
   }
 
   /* ═══════════════════════════════════════
@@ -753,12 +806,131 @@
   }
 
   /* ═══════════════════════════════════════
+     SETTINGS
+  ═══════════════════════════════════════ */
+  function saveToken() {
+    var t = document.getElementById('githubToken').value.trim();
+    if (!t) return;
+    localStorage.setItem('sac_gh_token', t);
+    var st = document.getElementById('tokenStatus');
+    st.style.display = 'block';
+    setTimeout(function(){ st.style.display = 'none'; }, 3000);
+    updateUploadBanner();
+  }
+
+  function getToken() { return localStorage.getItem('sac_gh_token') || ''; }
+
+  function updateUploadBanner() {
+    var el = document.getElementById('uploadBannerToken');
+    if (!el) return;
+    if (!getToken()) {
+      el.textContent = '⚠ No GitHub token set — go to Settings to enable direct uploads.';
+    } else {
+      el.textContent = '';
+    }
+  }
+
+  function resetAllData() {
+    if (!confirm('This will reset all product name/price/image overrides. Stock settings will also reset. Continue?')) return;
+    localStorage.removeItem('sac_products');
+    localStorage.removeItem('sac_inventory');
+    renderProducts();
+    alert('Reset complete.');
+  }
+
+  /* ═══════════════════════════════════════
+     GITHUB UPLOAD
+  ═══════════════════════════════════════ */
+  var REPO = 'Divi1545/Sethandco';
+  var BRANCH = 'main';
+
+  function productFilename(id, side) {
+    var num = id.replace('P','').padStart(3,'0');
+    // back image for composite products uses same file, different position
+    // for separate back images, we use pXXX_back.jpg
+    return side === 'back' ? 'images/p' + num + '_back.jpg' : 'images/p' + num + '.jpg';
+  }
+
+  function setUploadState(side, state, msg) {
+    var prog   = document.getElementById(side + 'Progress');
+    var bar    = document.getElementById(side + 'ProgressBar');
+    var status = document.getElementById(side + 'Status');
+    prog.style.display   = state === 'uploading' ? 'block' : 'none';
+    status.style.display = (state === 'ok' || state === 'err') ? 'block' : 'none';
+    status.className     = 'upload-status ' + (state === 'ok' ? 'ok' : 'err');
+    status.textContent   = msg || '';
+    if (state === 'uploading') { bar.style.width = '0'; setTimeout(function(){ bar.style.width = '70%'; }, 50); }
+    if (state === 'ok')        { bar.style.width = '100%'; }
+  }
+
+  function handleDrag(e, side) { e.preventDefault(); document.getElementById(side+'UploadZone').classList.add('drag'); }
+  function handleDragLeave(e, side) { document.getElementById(side+'UploadZone').classList.remove('drag'); }
+  function handleDrop(e, side) {
+    e.preventDefault();
+    document.getElementById(side+'UploadZone').classList.remove('drag');
+    var file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) uploadFile(file, side);
+  }
+  function handleFileSelect(e, side) {
+    var file = e.target.files[0];
+    if (file) uploadFile(file, side);
+  }
+
+  function uploadFile(file, side) {
+    var token = getToken();
+    if (!token) {
+      setUploadState(side, 'err', '⚠ No GitHub token — go to Settings and add your token first.');
+      return;
+    }
+    if (!currentEditId) return;
+    var path = productFilename(currentEditId, side);
+    setUploadState(side, 'uploading');
+
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var b64 = ev.target.result.split(',')[1];
+      // Check if file already exists to get its SHA
+      fetch('https://api.github.com/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH, {
+        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(existing) {
+        var body = { message: 'Upload ' + path, content: b64, branch: BRANCH };
+        if (existing && existing.sha) body.sha = existing.sha;
+        return fetch('https://api.github.com/repos/' + REPO + '/contents/' + path, {
+          method: 'PUT',
+          headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+          body: JSON.stringify(body)
+        });
+      })
+      .then(function(r){
+        if (!r.ok) return r.json().then(function(j){ throw new Error(j.message || r.status); });
+        return r.json();
+      })
+      .then(function(data) {
+        var rawUrl = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/' + path + '?v=' + Date.now();
+        document.getElementById('f' + (side==='front'?'Front':'Back') + 'Image').value = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/' + path;
+        previewImg(side);
+        setUploadState(side, 'ok', '✓ Uploaded — live on the website now!');
+      })
+      .catch(function(err) {
+        setUploadState(side, 'err', '✗ Upload failed: ' + err.message);
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /* ═══════════════════════════════════════
      INIT
   ═══════════════════════════════════════ */
   function showDashboard() {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('dashboard').style.display   = 'block';
     renderOverview();
+    // Pre-fill token field if saved
+    var t = getToken();
+    if (t) document.getElementById('githubToken').value = t;
+    updateUploadBanner();
   }
 
   if (checkSession()) showDashboard();
