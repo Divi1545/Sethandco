@@ -24,7 +24,7 @@
       --sans:  'DM Sans', system-ui, sans-serif;
     }
     html { font-size: 16px; }
-    body { font-family: var(--sans); color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img  { display: block; max-width: 100%; }
     a    { text-decoration: none; color: inherit; }
 
@@ -510,40 +510,119 @@
       .value-item:nth-child(3) { border-top: 1px solid var(--rule); }
       .value-item:nth-child(4) { border-top: 1px solid var(--rule); border-right: none; }
     }
+
     @media (max-width: 768px) {
       .hamburger { display: flex; }
       .nav-left  { display: none; }
+      .nav-inner { padding: 0 16px; }
       .pgrid     { grid-template-columns: repeat(2, 1fr); }
       .split2    { grid-template-columns: 1fr; }
       .split3    { grid-template-columns: 1fr 1fr; }
       .lookbook  { grid-template-columns: 1fr; }
-      .lk img, .lk.tall img { height: 380px; }
+      .lk img, .lk.tall img { height: 340px; }
       .about     { grid-template-columns: 1fr; }
-      .about-img { padding: 48px; min-height: auto; }
-      .about-copy { padding: 40px 28px; border-left: none; border-top: 1px solid var(--rule); }
+      .about-img { padding: 48px 24px; min-height: auto; }
+      .about-copy { padding: 40px 24px; border-left: none; border-top: 1px solid var(--rule); }
+      .about-heading { font-size: 28px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .contact-inner { grid-template-columns: 1fr; }
-      .hero { height: 70vh; }
-      .hero-body { bottom: 28px; left: 24px; right: 24px; }
-      .sp img  { height: 420px; }
-      .s3 img  { height: 300px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 28px; }
+      .contact-btns { min-width: auto; flex-direction: row; flex-wrap: wrap; }
+      .hero { height: 72vh; min-height: 460px; }
+      .hero-body { bottom: 28px; left: 24px; right: 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-mute { align-self: flex-end; }
+      .sp img  { height: 360px; }
+      .s3 img  { height: 260px; }
       .values  { grid-template-columns: 1fr 1fr; }
+      .hstrip-wrap { padding: 0 16px; }
+      .hcard { flex: 0 0 160px; }
+      .hcard img { width: 160px; height: 220px; }
+      .sec-head { padding: 28px 16px 16px; }
+      .lookbook-head { padding: 28px 16px 16px; }
+      .value-item { padding: 28px 20px; }
+      .contact { padding: 44px 24px; }
+      .contact-heading { font-size: 26px; }
     }
+
     @media (max-width: 480px) {
-      .split3      { grid-template-columns: 1fr; }
-      .split2      { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero { height: 65vh; }
-      .hero-body { bottom: 20px; left: 20px; right: 20px; }
-      .hero-heading { font-size: 32px; }
-      .pgrid { grid-template-columns: repeat(2, 1fr); }
-      .values { grid-template-columns: 1fr; }
-      .value-item { border-right: none; border-bottom: 1px solid var(--rule); }
-      .editorial-body { left: 20px; right: 20px; bottom: 20px; }
-      .contact { padding: 40px 20px; }
-      .about-img { padding: 40px 24px; }
-      .about-copy { padding: 32px 20px; }
-      .topbar { font-size: 9px; letter-spacing: .8px; }
+      /* Nav */
+      .nav-inner { padding: 0 14px; height: 52px; }
+      .nav-logo-name { font-size: 17px; letter-spacing: 3px; }
+      .mobile-nav { top: 52px; }
+      .topbar { font-size: 9px; letter-spacing: .5px; padding: 8px 14px; }
+
+      /* Hero */
+      .hero { height: 62vh; min-height: 400px; }
+      .hero-body { bottom: 20px; left: 16px; right: 16px; }
+      .hero-heading { font-size: 28px; margin-bottom: 16px; }
+      .hero-eyebrow { font-size: 9px; margin-bottom: 8px; }
+      .hero-cta { font-size: 10px; padding: 11px 22px; }
+
+      /* Product grid — enquire always visible on touch */
+      .pc-enquire { opacity: 1; font-size: 9px; padding: 9px 6px; letter-spacing: .8px; }
+      .pc-wish { opacity: 1; bottom: 46px; width: 30px; height: 30px; }
+      .pc-info { padding: 10px 10px 16px; }
+      .pc-name { font-size: 11px; }
+      .pc-sub  { font-size: 10px; }
+      .pc-price { font-size: 11px; }
+
+      /* Featured strip */
+      .hstrip-wrap { padding: 0 14px; }
+      .hcard { flex: 0 0 140px; }
+      .hcard img { width: 140px; height: 192px; }
+      .hcard-name { font-size: 10px; }
+      .hcard-price { font-size: 10px; }
+
+      /* Splits and lookbook */
+      .split3 { grid-template-columns: 1fr; }
+      .split2 { grid-template-columns: 1fr; }
+      .sp img  { height: 280px; }
+      .s3 img  { height: 260px; }
+      .lk img, .lk.tall img { height: 280px; }
+      .sp-name { font-size: 18px; }
+      .s3-name { font-size: 14px; }
+
+      /* Editorial */
+      .editorial img { height: 55vh; min-height: 300px; }
+      .editorial-body { bottom: 20px; left: 16px; right: 16px; }
+      .editorial-heading { font-size: 24px; margin-bottom: 14px; }
+      .editorial-cta { font-size: 10px; padding: 10px 20px; }
+      .editorial-price { bottom: 20px; right: 16px; font-size: 11px; }
+
+      /* Values */
+      .values { grid-template-columns: 1fr; margin-top: 32px; }
+      .value-item { border-right: none; border-bottom: 1px solid var(--rule); padding: 24px 20px; }
+      .value-title { font-size: 15px; }
+
+      /* About */
+      .about-img { padding: 36px 20px; }
+      .about-copy { padding: 28px 20px; }
+      .about-heading { font-size: 24px; }
+      .about-body { font-size: 12px; }
+
+      /* Contact */
+      .contact { padding: 36px 16px; }
+      .contact-heading { font-size: 22px; margin-bottom: 14px; }
+      .contact-btns { flex-direction: column; }
+      .contact-line { font-size: 11px; }
+
+      /* Section headers */
+      .sec-head { padding: 24px 14px 14px; }
+      .sec-head-title { font-size: 22px; }
+      .lookbook-head { padding: 24px 14px 14px; }
+      .lookbook-head-title { font-size: 22px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+
+      /* SL Banner */
+      .sl-banner img { height: 50vh; min-height: 280px; }
+      .sl-heading { font-size: clamp(22px, 7vw, 36px); }
+    }
+
+    /* Touch device: always show enquire button */
+    @media (hover: none) {
+      .pc-enquire { opacity: 1; }
+      .pc-wish    { opacity: 1; }
     }
   </style>
 </head>
