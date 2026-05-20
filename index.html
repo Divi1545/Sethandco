@@ -635,12 +635,12 @@
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-left">
-      <a class="nav-link active" href="#">New In</a>
-      <a class="nav-link" href="#">Graphic Tees</a>
-      <a class="nav-link" href="#">Oversized Tees</a>
-      <a class="nav-link" href="#">2–5 Years</a>
-      <a class="nav-link" href="#">About Us</a>
-      <a class="nav-link red" href="#">Sale</a>
+      <a class="nav-link active" href="#" onclick="navFilter(event,'all')">New In</a>
+      <a class="nav-link" href="#" onclick="navFilter(event,'graphic-tees')">Graphic Tees</a>
+      <a class="nav-link" href="#" onclick="navFilter(event,'oversized-tees')">Oversized Tees</a>
+      <a class="nav-link" href="#" onclick="navFilter(event,'all')">2–5 Years</a>
+      <a class="nav-link" href="#" onclick="navAbout(event)">About Us</a>
+      <a class="nav-link red" href="#" onclick="navFilter(event,'gift-ideas')">Sale</a>
     </div>
 
     <a class="nav-logo" href="#">
@@ -668,14 +668,14 @@
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-divider">Shop</div>
-  <a href="#" onclick="closeMobileNav()">New In</a>
-  <a href="#" onclick="closeMobileNav()">Graphic Tees</a>
-  <a href="#" onclick="closeMobileNav()">Oversized Tees</a>
-  <a href="#" onclick="closeMobileNav()">2–5 Years</a>
-  <a href="#" onclick="closeMobileNav()">Gift Ideas</a>
-  <a class="red" href="#" onclick="closeMobileNav()">Sale</a>
+  <a href="#" onclick="closeMobileNav();navFilter(event,'all')">New In</a>
+  <a href="#" onclick="closeMobileNav();navFilter(event,'graphic-tees')">Graphic Tees</a>
+  <a href="#" onclick="closeMobileNav();navFilter(event,'oversized-tees')">Oversized Tees</a>
+  <a href="#" onclick="closeMobileNav();navFilter(event,'all')">2–5 Years</a>
+  <a href="#" onclick="closeMobileNav();navFilter(event,'gift-ideas')">Gift Ideas</a>
+  <a class="red" href="#" onclick="closeMobileNav();navFilter(event,'gift-ideas')">Sale</a>
   <div class="mobile-nav-divider">Info</div>
-  <a href="#" onclick="closeMobileNav()">About Us</a>
+  <a href="#" onclick="closeMobileNav();navAbout(event)">About Us</a>
   <a href="#" onclick="closeMobileNav()">Size Guide</a>
   <a href="#" onclick="closeMobileNav()">How to Order</a>
   <a href="https://wa.me/94777813230" target="_blank" onclick="closeMobileNav()">WhatsApp Us</a>
@@ -712,7 +712,7 @@
 <div class="pgrid">
 
   <!-- P001 Beaver -->
-  <div class="pc" data-product-id="P001" onclick="trackView('P001')">
+  <div class="pc" data-product-id="P001" data-cat="graphic-tees" data-ages="2 3 4 5" onclick="trackView('P001')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/1GBWOCeE8JjyCzyRd5SZKEjKjnSabN7wT=w800" alt="Beaver Graphic Tee"/>
       <img class="pc-img-back" src="" alt="Beaver Graphic Tee back"/>
@@ -730,7 +730,7 @@
   </div>
 
   <!-- P002 Best Dude -->
-  <div class="pc" data-product-id="P002" onclick="trackView('P002')">
+  <div class="pc" data-product-id="P002" data-cat="graphic-tees" data-ages="2 3 4 5" onclick="trackView('P002')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/1hzzyy4FqL9joeKRX1zk8D8COBiyPx9Yg=w800" alt="Best Dude Graphic Tee"/>
       <img class="pc-img-back" src="" alt="Best Dude Graphic Tee back"/>
@@ -748,7 +748,7 @@
   </div>
 
   <!-- P003 My Uncle Is A Legend -->
-  <div class="pc" data-product-id="P003" onclick="trackView('P003')">
+  <div class="pc" data-product-id="P003" data-cat="graphic-tees gift-ideas" data-ages="2 3 4 5" onclick="trackView('P003')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/1p0MTz2_LX4qrhJw7HjRtnNSEpTY6BQ9b=w800" alt="My Uncle Is A Legend Tee"/>
       <img class="pc-img-back" src="" alt="My Uncle Is A Legend back"/>
@@ -766,7 +766,7 @@
   </div>
 
   <!-- P004 My Aunt Is A Legend -->
-  <div class="pc" data-product-id="P004" onclick="trackView('P004')">
+  <div class="pc" data-product-id="P004" data-cat="graphic-tees gift-ideas" data-ages="2 3 4 5" onclick="trackView('P004')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/1kt6LMz73dq7kDJ_2yXfqwjGb8YJVw9n1=w800" alt="My Aunt Is A Legend Tee"/>
       <img class="pc-img-back" src="" alt="My Aunt Is A Legend back"/>
@@ -784,7 +784,7 @@
   </div>
 
   <!-- P005 Paw Patrol -->
-  <div class="pc" data-product-id="P005" onclick="trackView('P005')">
+  <div class="pc" data-product-id="P005" data-cat="graphic-tees gift-ideas" data-ages="2 3 4 5" onclick="trackView('P005')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/1yARcjcIsGugv2aVyhgiEnThP04pF91Ud=w800" alt="Paw Patrol Sky Officer Tee"/>
       <img class="pc-img-back" src="" alt="Paw Patrol Sky Officer back"/>
@@ -802,7 +802,7 @@
   </div>
 
   <!-- P006 Cool Moms Club -->
-  <div class="pc" data-product-id="P006" onclick="trackView('P006')">
+  <div class="pc" data-product-id="P006" data-cat="oversized-tees gift-ideas" data-ages="2 3 4 5" onclick="trackView('P006')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/15U9kat5RF-rp8oN0aphJdULlFPsgFZWg=w800" alt="Cool Moms Club Oversized Tee"/>
       <img class="pc-img-back" src="" alt="Cool Moms Club back"/>
@@ -818,7 +818,7 @@
   </div>
 
   <!-- P007 Cool Aunts Club -->
-  <div class="pc" data-product-id="P007" onclick="trackView('P007')">
+  <div class="pc" data-product-id="P007" data-cat="oversized-tees gift-ideas" data-ages="2 3 4 5" onclick="trackView('P007')">
     <div class="pc-img-wrap">
       <img class="pc-img-front" src="https://lh3.googleusercontent.com/d/19yoCBaoZP5m0G-B0bONfz9qSwWOuJR2_=w800" alt="Cool Aunts Club Oversized Tee"/>
       <img class="pc-img-back" src="" alt="Cool Aunts Club back"/>
@@ -1355,13 +1355,52 @@
     trackEvent('newsletter_subscribe');
   }
 
-  /* ── CATEGORY FILTER (visual) ── */
+  /* ── CATEGORY FILTER ── */
+  function applyFilter(key) {
+    var pills = document.querySelectorAll('.cat-item');
+    pills.forEach(function(p) {
+      p.classList.toggle('active', p.textContent.trim().toLowerCase().replace(/\s+/g,'-') === key || (key === 'all' && p.textContent.trim() === 'All'));
+    });
+    var cards = document.querySelectorAll('.pc[data-product-id]');
+    cards.forEach(function(card) {
+      if (key === 'all') {
+        card.style.display = '';
+        return;
+      }
+      var cats  = (card.dataset.cat  || '').split(' ');
+      var ages  = (card.dataset.ages || '').split(' ');
+      var ageKey = key.replace('-years','');
+      var match = cats.indexOf(key) > -1 || ages.indexOf(ageKey) > -1;
+      card.style.display = match ? '' : 'none';
+    });
+    /* keep "more soon" tile always visible */
+    var more = document.querySelector('.pc:not([data-product-id])');
+    if (more) more.style.display = '';
+  }
+
   document.querySelectorAll('.cat-item').forEach(function(el) {
     el.addEventListener('click', function() {
-      document.querySelectorAll('.cat-item').forEach(function(x){ x.classList.remove('active'); });
-      el.classList.add('active');
+      var key = el.textContent.trim().toLowerCase().replace(/\s+/g,'-');
+      applyFilter(key);
     });
   });
+
+  function navFilter(e, key) {
+    e.preventDefault();
+    applyFilter(key);
+    document.querySelectorAll('.nav-link').forEach(function(l){ l.classList.remove('active'); });
+    e.currentTarget.classList.add('active');
+    var grid = document.querySelector('.pgrid');
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function navAbout(e) {
+    e.preventDefault();
+    document.querySelectorAll('.nav-link').forEach(function(l){ l.classList.remove('active'); });
+    e.currentTarget.classList.add('active');
+    var about = document.querySelector('.about');
+    if (about) about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   /* ── INIT ── */
   loadProductOverrides();
